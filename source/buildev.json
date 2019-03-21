@@ -1,0 +1,11 @@
+{
+    "EXE": [
+        "rm -rf dist",
+        "mkdir -p dist/blocks",
+        "mkdir -p dist/tpls/one",
+        "cp source/blocks/* dist/blocks",
+        "cp source/tpls/one/index.html dist/tpls/one/"
+    ],
+    "source/*.js": "dist",
+    "source/tpls/one/*.less": "dist/tpls/one -plugins=malta-less...malta-rename[to:'style.css']"
+}
