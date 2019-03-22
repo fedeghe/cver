@@ -3,11 +3,15 @@ const Cver = require('./cver'),
 
     cver = new Cver(),
 
+    labels = {
+        title: 'i18n[Presentazione]'
+    },
+
     config = {
         outFolder: 'out',
         translate: {
             from: 'it',
-            to: 'en'
+            to: 'zh-TW'
         },
         tpl: {
             file: 'one',
@@ -16,7 +20,7 @@ const Cver = require('./cver'),
                 component: 'header1',
                 data: {
                     img: 'tryme/federico.jpg',
-                    cvLabel: 'Curriculum vitae',
+                    title: labels.title,
                     name: 'Federico Ghedina',
                     left: {
                         component: 'headerInfo1',
