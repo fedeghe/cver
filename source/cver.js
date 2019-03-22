@@ -30,10 +30,28 @@ Cver.prototype.prepare = function () {
     return Balle.one((resolve) => {
         Balle.chain([
             self.createOutDir(),
-            self.createSections(),
+            self.createBlocks(),
+            self.createVars(),
             self.runMalta()
         ]).then(() => {
             log('\t@prepare V');
+            resolve();
+        });
+    });
+};
+
+Cver.prototype.createVars = function () {
+    log('\t\t@createVars');
+    const self = this,
+        varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`;
+    return () => Balle.one((resolve) => {
+        fs.writeFile(varsFile, JSON.stringify({
+            header: {
+                title: self.config.tpl.header.data.title
+            }
+        }), (err) => {
+            if (err) throw err;
+            log('\t\t@createVars V');
             resolve();
         });
     });
@@ -66,8 +84,8 @@ Cver.prototype.createOutDir = function () {
         });
     });
 };
-Cver.prototype.createSections = function () {
-    log('\t\t@createSections');
+Cver.prototype.createBlocks = function () {
+    log('\t\t@createBlocks');
     const self = this;
     return () => Balle.one(resolve => {
         Balle.chain([
@@ -76,7 +94,6 @@ Cver.prototype.createSections = function () {
                     `dist/tpls/${self.config.tpl.file}/index.html`,
                     `${self.config.outFolder}/source/${self.config.tpl.file}.html`,
                     (err) => {
-                        console.log('copy1 done');
                         if (err) throw err;
                         resolve();
                     }
@@ -87,7 +104,6 @@ Cver.prototype.createSections = function () {
                     `dist/blocks/${self.config.tpl.header.component}.html`,
                     `${self.config.outFolder}/source/header.html`,
                     (err) => {
-                        console.log('copy2 done');
                         if (err) throw err;
                         resolve();
                     }
@@ -98,7 +114,6 @@ Cver.prototype.createSections = function () {
                     `dist/tpls/${self.config.tpl.file}/style.css`,
                     `${self.config.outFolder}/source/style.css`,
                     (err) => {
-                        console.log('copy3 done');
                         if (err) throw err;
                         resolve();
                     }
@@ -110,7 +125,6 @@ Cver.prototype.createSections = function () {
                     `dist/blocks/${el}.html`,
                     `${self.config.outFolder}/source/${el}.html`,
                     (err) => {
-                        console.log('copy4 done');
                         if (err) throw err;
                         resolve();
                     }
@@ -122,14 +136,13 @@ Cver.prototype.createSections = function () {
                     `dist/blocks/${block.name}.html`,
                     `${self.config.outFolder}/source/${block.name}.html`,
                     (err) => {
-                        console.log('copy5 done');
                         if (err) throw err;
                         resolve();
                     }
                 );
             })
         ))).then(() => {
-            log('\t\t@createSections V');
+            log('\t\t@createBlocks V');
             resolve();
         });
     });
@@ -141,7 +154,7 @@ Cver.prototype.runMalta = function () {
     return () => Balle.one(resolve => {
         malta.check([
             `#out/source/${self.config.tpl.file}.html`, 'out',
-            '-plugins=malta-html2pdf'
+            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-html2pdf`
         ]).start().then(() => {
             log('\t\t@runMalta V');
             resolve();
