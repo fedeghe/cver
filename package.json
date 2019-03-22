@@ -24,7 +24,8 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "malta": "^3.9.7",
+    "balle": "^1.0.36",
+    "malta": "^3.9.8",
     "malta-html2pdf": "^1.0.2",
     "malta-js-uglify": "^1.0.5",
     "malta-less": "^1.0.6",
