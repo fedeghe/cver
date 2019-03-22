@@ -1,7 +1,14 @@
-body {
-  background-color: red;
-  color: white;
+html {
+  background-color: white;
 }
-body p {
-  color: green;
+html body {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ff0000;
+}
+html body h1 {
+  color: blue;
+}
+html body p {
+  color: #ffff00;
 }
