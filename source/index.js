@@ -4,41 +4,58 @@ const Cver = require('./cver'),
     cver = new Cver(),
 
     labels = {
-        title: 'i18n[Presentazione]'
+        header: {
+            title: 'i18n[Presentazione]'
+        },
+        body: {
+            component1: {
+                content: 'i18n[il mio contenuto]'
+            },
+            component2: {
+                content: 'i18n[un commento]'
+            }
+        }
     },
 
     config = {
         outFolder: 'out',
         translate: {
             from: 'it',
-            to: 'zh-TW'
+            to: 'en'
         },
         tpl: {
             file: 'one',
             style: 'dark',
             header: {
-                component: 'header1',
+                name: 'header1',
                 data: {
                     img: 'tryme/federico.jpg',
-                    title: labels.title,
-                    name: 'Federico Ghedina',
+                    title: labels.header.title,
+                    name: 'Federico Ghedina'
+                },
+                blocks: [{
                     left: {
-                        component: 'headerInfo1',
+                        name: 'headerInfo1',
                         data: {
                             content: 'contatto skype'
                         }
                     }
-                }
+                }]
             },
             body: {
                 blocks: [{
+                    name: 'component1',
+                    data: {
+                        content: labels.body.component1.content
+                    }
+                }, {
                     name: 'component2',
                     data: {
-                        content: 'il mio contenuto'
+                        content: labels.body.component2.content
                     }
                 }]
             },
-            foooter: {
+            footer: {
                 blocks: null
             }
         }

@@ -2,6 +2,7 @@
 const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
+    sh = require('searchhash'),
     malta = Malta.get(),
 
     doLog = true,
@@ -27,6 +28,7 @@ Cver.prototype.print = function () {
 Cver.prototype.prepare = function () {
     log('\t@prepare');
     const self = this;
+
     return Balle.one((resolve) => {
         Balle.chain([
             self.createOutDir(),
@@ -40,17 +42,32 @@ Cver.prototype.prepare = function () {
     });
 };
 
+
 Cver.prototype.createVars = function () {
     log('\t\t@createVars');
     const self = this,
-        varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`;
-    return () => Balle.one((resolve) => {
-        fs.writeFile(varsFile, JSON.stringify({
-            header: {
-                title: self.config.tpl.header.data.title
+        varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
+        data = sh.forKey(self.config, 'data');
+    console.log(data);
+    console.log('------');
+    let baseObj = {};
+
+    data.forEach(d => {
+        console.log(d.obj)
+        baseObj[d.obj.name] = baseObj[d.obj.name] || {};
+        for (let i in d.value) {
+            baseObj[d.obj.name][i] = d.value[i];
+        }
+    });
+
+    console.log(JSON.stringify(baseObj));
+
+    return () => Balle.one(resolve => {
+        fs.writeFile(varsFile, JSON.stringify(baseObj), (err) => {
+            if (err) {
+                console.log(err);
+                throw err;
             }
-        }), (err) => {
-            if (err) throw err;
             log('\t\t@createVars V');
             resolve();
         });
@@ -84,6 +101,7 @@ Cver.prototype.createOutDir = function () {
         });
     });
 };
+
 Cver.prototype.createBlocks = function () {
     log('\t\t@createBlocks');
     const self = this;
@@ -101,7 +119,7 @@ Cver.prototype.createBlocks = function () {
             }),
             () => Balle.one(resolve => {
                 fs.copyFile(
-                    `dist/blocks/${self.config.tpl.header.component}.html`,
+                    `dist/blocks/${self.config.tpl.header.name}.html`,
                     `${self.config.outFolder}/source/header.html`,
                     (err) => {
                         if (err) throw err;
@@ -121,10 +139,22 @@ Cver.prototype.createBlocks = function () {
             })
         ].concat(['body', 'footer'].map(el => () => Balle.one(
             resolve => {
-                fs.copyFile(
-                    `dist/blocks/${el}.html`,
+                let sectionContent = fs.readFileSync(`dist/blocks/${el}.html`, { encoding: 'UTF8' }),
+                    blocksContent = '';
+
+                if (self.config.tpl[el].blocks) {
+                    blocksContent = self.config.tpl[el].blocks.reduce((acc, current) => {
+                        const content = `$$$$${current.name}.html$$$$`;
+                        console.log(content);
+                        return [acc, content].join('\n');
+                    }, '');
+                    console.log(blocksContent, sectionContent);
+                }
+            
+                fs.writeFile(
                     `${self.config.outFolder}/source/${el}.html`,
-                    (err) => {
+                    sectionContent.replace(`%${el}_blocks%`, blocksContent),
+                    err => {
                         if (err) throw err;
                         resolve();
                     }
@@ -154,7 +184,8 @@ Cver.prototype.runMalta = function () {
     return () => Balle.one(resolve => {
         malta.check([
             `#out/source/${self.config.tpl.file}.html`, 'out',
-            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-html2pdf`
+            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-html2pdf`,
+            '-options=showPath:false'
         ]).start().then(() => {
             log('\t\t@runMalta V');
             resolve();
