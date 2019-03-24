@@ -24,6 +24,18 @@ The documentation for the config will come soon, as far as I have a stable one. 
 #### Available blocks and themes
 ... not written yet
 
+#### In case you are curious
+Install deps:  
+
+    @ npm i
+    @ npm run buildev
+
+let the build process go, will watch `source` and fresh build `dist` on meaningful editing. Now the `dist` folder is ready, try it running
+
+    @ node dist/index.js
+
+and check the content of the `out` folder when done.
+
 ---
 
 ##### Development todoList
