@@ -3,9 +3,10 @@
         "rm -rf dist",
         "mkdir -p dist/blocks",
         "mkdir -p dist/tpls/one",
-        "cp source/blocks/* dist/blocks",
+        "cp -r source/blocks dist/",
         "cp source/tpls/one/index.html dist/tpls/one/"
     ],
     "source/*.js": "dist",
-    "source/tpls/one/*.less": "dist/tpls/one -plugins=malta-less...malta-rename[to:'style.css']"
+    "source/tpls/common.less": "dist/tpls -plugins=malta-less",
+    "source/tpls/one/*.less": "dist/tpls/one -plugins=malta-less"
 }
