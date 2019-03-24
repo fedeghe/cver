@@ -1,4 +1,4 @@
-try{
+try {
     const Cver = require('./cver'),
 
         cver = new Cver(),
