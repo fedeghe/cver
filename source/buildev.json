@@ -1,11 +1,12 @@
 {
     "EXE": [
         "rm -rf dist",
-        "mkdir -p dist/blocks",
-        "mkdir -p dist/tpls/one",
-        "cp -r source/blocks dist/",
-        "cp source/tpls/one/index.html dist/tpls/one/"
+        "mkdir -p dist/blocks/core",
+        "mkdir -p dist/tpls/one"
     ],
+    "source/blocks/*.html": "dist/blocks -options=justCopy:true",
+    "source/blocks/core/*.html": "dist/blocks/core -options=justCopy:true",
+    "source/tpls/one/index.html": "dist/tpls/one -options=justCopy:true",
     "source/*.js": "dist",
     "source/tpls/common.less": "dist/tpls -plugins=malta-less",
     "source/tpls/one/*.less": "dist/tpls/one -plugins=malta-less"
