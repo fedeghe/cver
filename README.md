@@ -7,7 +7,7 @@ Provide a programmatic flexible and easy way to create cool automatically transl
 #### How
 Given a config file, which basically contains informations about which blocks and style to use, and obviously the text content for each of those. You can write the text in almost any language and get the output pdf in any other; more or less as follows:
 ``` js
-const Cver = require('./cver'),
+const Cver = require('cver'),
     cver = new Cver(),
     config = {
         /* setting content */
