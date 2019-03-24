@@ -4,11 +4,12 @@ const fs = require('fs'),
     Balle = require('balle'),
     sh = require('searchhash'),
     malta = Malta.get(),
-
     doLog = true,
     log = msg => doLog && console.log(msg);
 
 function Cver () {
+    this.start = new Date();
+    this.end = 0;
     this.config = null;
     this.ready = false;
     this.root = process.cwd();
@@ -20,52 +21,61 @@ Cver.prototype.setup = function (config) {
 
 Cver.prototype.print = function () {
     log('@print');
-    this.prepare().then(() => {
+    const self = this;
+    Balle.chain([
+        self.process(),
+        self.runMalta()
+    ]).then(() => {
+        self.end = new Date();
         log('@print V');
+        log(`time: ${this.end - this.start}ms`);
+        log('done');
     });
 };
 
-Cver.prototype.prepare = function () {
-    log('\t@prepare');
+Cver.prototype.process = function () {
     const self = this;
-
-    return Balle.one((resolve) => {
+    return () => Balle.one(resolve => {
+        log('\t@process');
         Balle.chain([
             self.createOutDir(),
-            self.createBlocks(),
             self.createVars(),
-            self.runMalta()
+            self.createTpl(),
+            self.createStyles(),
+            self.createBlocks()
         ]).then(() => {
-            log('\t@prepare V');
-            resolve();
+            log('\t@process V'); resolve();
         });
     });
 };
 
-
 Cver.prototype.createVars = function () {
-    log('\t\t@createVars');
-    const self = this,
+    log('\t\t@createVars'); const self = this,
         varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
         data = sh.forKey(self.config, 'data');
-    console.log(data);
-    console.log('------');
-    let baseObj = {};
 
+    let baseObj = {};
     data.forEach(d => {
-        console.log(d.obj)
-        baseObj[d.obj.name] = baseObj[d.obj.name] || {};
+        let key = null;
+        switch (true) {
+            case 'name' in d.obj:
+                key = d.obj.name;
+                break;
+            case 'parentKey' in d:
+                key = d.parentKey;
+                break;
+            default:;
+        }
+        baseObj[key] = baseObj[key] || {};
         for (let i in d.value) {
-            baseObj[d.obj.name][i] = d.value[i];
+            baseObj[key][i] = d.value[i];
         }
     });
-
-    console.log(JSON.stringify(baseObj));
 
     return () => Balle.one(resolve => {
         fs.writeFile(varsFile, JSON.stringify(baseObj), (err) => {
             if (err) {
-                console.log(err);
+                log(err);
                 throw err;
             }
             log('\t\t@createVars V');
@@ -102,92 +112,119 @@ Cver.prototype.createOutDir = function () {
     });
 };
 
-Cver.prototype.createBlocks = function () {
-    log('\t\t@createBlocks');
+Cver.prototype.createTpl = function () {
+    log('\t\t@createTpl');
     const self = this;
-    return () => Balle.one(resolve => {
+    return () => Balle.one((resolve, reject) => {
+        fs.copyFile(
+            `dist/tpls/${self.config.tpl.name}/index.html`,
+            `${self.config.outFolder}/source/${self.config.tpl.name}.html`,
+            (err) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    log('\t\t@createTpl V');
+                    resolve();
+                }
+            }
+        );
+    });
+};
+
+Cver.prototype.createStyles = function () {
+    log('\t\t@createStyles');
+    const self = this;
+
+    return () => Balle.one((resolve, reject) => {
         Balle.chain([
-            () => Balle.one(resolve => {
+            () => Balle.one((resolve, reject) => {
                 fs.copyFile(
-                    `dist/tpls/${self.config.tpl.file}/index.html`,
-                    `${self.config.outFolder}/source/${self.config.tpl.file}.html`,
+                    `dist/tpls/common.css`,
+                    `${self.config.outFolder}/source/common.css`,
                     (err) => {
-                        if (err) throw err;
-                        resolve();
+                        err ? reject(err) : resolve();
                     }
                 );
             }),
-            () => Balle.one(resolve => {
+            () => Balle.one((resolve, reject) => {
                 fs.copyFile(
-                    `dist/blocks/${self.config.tpl.header.name}.html`,
-                    `${self.config.outFolder}/source/header.html`,
-                    (err) => {
-                        if (err) throw err;
-                        resolve();
-                    }
-                );
-            }),
-            () => Balle.one(resolve => {
-                fs.copyFile(
-                    `dist/tpls/${self.config.tpl.file}/style.css`,
+                    `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme}.css`,
                     `${self.config.outFolder}/source/style.css`,
                     (err) => {
-                        if (err) throw err;
-                        resolve();
+                        err ? reject(err) : resolve();
                     }
                 );
             })
-        ].concat(['body', 'footer'].map(el => () => Balle.one(
-            resolve => {
-                let sectionContent = fs.readFileSync(`dist/blocks/${el}.html`, { encoding: 'UTF8' }),
+        ]).then(() => {
+            log('\t\t@createStyles V');
+            resolve();
+        }).catch(e => {
+            reject(e);
+        });
+    });
+};
+
+Cver.prototype.createBlocks = function () {
+    log('\t\t@createBlocks');
+    const self = this;
+
+    return () => Balle.one((resolve, reject) => {
+        Balle.chain(['header', 'body', 'footer'].map(el => () => Balle.one(
+            (resolve, reject) => {
+                let sectionContent = fs.readFileSync(`dist/blocks/core/${el}.html`, { encoding: 'utf-8' }),
                     blocksContent = '';
 
                 if (self.config.tpl[el].blocks) {
                     blocksContent = self.config.tpl[el].blocks.reduce((acc, current) => {
                         const content = `$$$$${current.name}.html$$$$`;
-                        console.log(content);
                         return [acc, content].join('\n');
                     }, '');
-                    console.log(blocksContent, sectionContent);
                 }
-            
+
                 fs.writeFile(
                     `${self.config.outFolder}/source/${el}.html`,
                     sectionContent.replace(`%${el}_blocks%`, blocksContent),
                     err => {
-                        if (err) throw err;
-                        resolve();
+                        err ? reject(err) : resolve();
                     }
                 );
             })
-        )).concat(self.config.tpl.body.blocks.map(
-            block => () => Balle.one(resolve => {
-                fs.copyFile(
-                    `dist/blocks/${block.name}.html`,
-                    `${self.config.outFolder}/source/${block.name}.html`,
-                    (err) => {
-                        if (err) throw err;
-                        resolve();
-                    }
-                );
-            })
-        ))).then(() => {
+        ).concat(
+            [].concat(
+                self.config.tpl.header.blocks,
+                self.config.tpl.body.blocks,
+                self.config.tpl.footer.blocks
+            ).map(
+                block => () => Balle.one((resolve, reject) => {
+                    fs.copyFile(
+                        `dist/blocks/${block.name}.html`,
+                        `${self.config.outFolder}/source/${block.name}.html`,
+                        (err) => {
+                            err ? reject(err) : resolve();
+                        }
+                    );
+                })
+            )
+        )).then(() => {
             log('\t\t@createBlocks V');
             resolve();
+        }).catch(e => {
+            reject(e);
         });
     });
 };
 
 Cver.prototype.runMalta = function () {
-    log('\t\t@runMalta');
+    
     const self = this;
     return () => Balle.one(resolve => {
+        log('\t@runMalta');
         malta.check([
-            `#out/source/${self.config.tpl.file}.html`, 'out',
+            `#out/source/${self.config.tpl.name}.html`, 'out',
             `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-html2pdf`,
-            '-options=showPath:false'
+            '-options=showPath:false,verbose:0'
         ]).start().then(() => {
-            log('\t\t@runMalta V');
+            log('\t@runMalta V');
             resolve();
         });
     });
