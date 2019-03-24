@@ -60,11 +60,9 @@ Cver.prototype.createVars = function () {
     data.forEach(d => {
         let key = null;
         switch (true) {
-            /*
             case 'alias' in d.obj:
                 key = d.obj.alias;
                 break;
-            */
             case 'name' in d.obj:
                 key = d.obj.name;
                 break;
@@ -183,7 +181,7 @@ Cver.prototype.createBlocks = function () {
 
                 if (self.config.tpl[el].blocks) {
                     blocksContent = self.config.tpl[el].blocks.reduce((acc, current) => {
-                        const content = `$$$$${current.name}.html$$$$`;
+                        const content = `$$$$${current.alias || current.name}.html$$$$`;
                         return [acc, content].join('\n');
                     }, '');
                 }
@@ -203,6 +201,21 @@ Cver.prototype.createBlocks = function () {
                 self.config.tpl.footer.blocks
             ).map(
                 block => () => Balle.one((resolve, reject) => {
+                    let content = fs.readFileSync(`dist/blocks/${block.name}.html`, { encoding: 'utf-8' });
+                    if (block.alias) {
+                        while (content.indexOf(`$${block.name}.`) >= 0) {
+                            content = content.replace(`$${block.name}.`, `$${block.alias}.`);
+                        }
+                    }
+                    fs.writeFile(
+                        `${self.config.outFolder}/source/${block.alias || block.name}.html`,
+                        content,
+                        { encoding: 'utf-8' },
+                        (err) => {
+                            err ? reject(err) : resolve();
+                        }
+                    );
+                    /*
                     fs.copyFile(
                         `dist/blocks/${block.name}.html`,
                         `${self.config.outFolder}/source/${block.name}.html`,
@@ -210,6 +223,9 @@ Cver.prototype.createBlocks = function () {
                             err ? reject(err) : resolve();
                         }
                     );
+                    */
+
+
                 })
             )
         )).then(() => {
