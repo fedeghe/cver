@@ -7,8 +7,8 @@ const fs = require('fs'),
     log = msg => doLog && console.log(msg);
 
 function Cver () {
-    this.start = new Date();
-    this.end = 0;
+    this.times = {};
+    this.times.start = new Date();
     this.config = null;
     this.ready = false;
     this.root = process.cwd();
@@ -25,9 +25,7 @@ Cver.prototype.print = function () {
         self.process(),
         self.runMalta()
     ]).then(() => {
-        self.end = new Date();
         log('@print V');
-        log(`time: ${this.end - this.start}ms`);
         log('done');
     });
 };
@@ -53,10 +51,20 @@ Cver.prototype.createVars = function () {
         varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
         data = sh.forKey(self.config, 'data');
 
-    let baseObj = {};
+    let baseObj = {
+        cverGithub: 'https://github.com/fedeghe/cver',
+        cverNpm: 'https://github.com/fedeghe/cver',
+        cverAuthor: '$PACKAGE.author$',
+        cverVersion: '$PACKAGE.version$'
+    };
     data.forEach(d => {
         let key = null;
         switch (true) {
+            /*
+            case 'alias' in d.obj:
+                key = d.obj.alias;
+                break;
+            */
             case 'name' in d.obj:
                 key = d.obj.name;
                 break;
@@ -213,45 +221,29 @@ Cver.prototype.createBlocks = function () {
     });
 };
 
-/*
-Cver.prototype.runMalta = function () {
-    const self = this;
-    return () => Balle.one(resolve => {
-        log('\t@runMalta');
-        malta.check([
-            `#out/source/${self.config.tpl.name}.html`, 'out',
-            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-rename[to:"${self.config.outName}_${self.config.translate.to}.html"]...malta-html2pdf`,
-            '-options=showPath:false,verbose:0'
-        ]).start().then(() => {
-            log('\t@runMalta V');
-            resolve();
-        });
-    });
-};
-*/
 
 Cver.prototype.runMalta = function () {
-    log('\t\t@createStyles');
     const self = this,
         targetLangs = self.config.translate.to instanceof Array
             ? self.config.translate.to
             : [self.config.translate.to];
 
     return () => Balle.one((resolve, reject) => {
+        log('\t@runMaltas');
         Balle.chain(
             targetLangs.map(lang => () => Balle.one(resolve => {
-                log(`\t@runMalta for lang ${lang}`);
+                log(`\t\t@runMalta for lang ${lang}`);
                 Malta.get().check([
                     `#out/source/${self.config.tpl.name}.html`, 'out',
-                    `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf`,
+                    `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf[format:"${self.config.format}",border:"0.2in"]`,
                     '-options=showPath:false,verbose:0'
                 ]).start().then(() => {
-                    log(`\t@runMalta for lang ${lang} V`);
+                    log(`\t\t@runMalta for lang ${lang} V`);
                     resolve();
                 });
             }))
         ).then(() => {
-            log('\t\t@createStyles V');
+            log('\t@runMaltas V');
             resolve();
         }).catch(e => {
             reject(e);
