@@ -3,7 +3,6 @@ const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
     sh = require('searchhash'),
-    malta = Malta.get(),
     doLog = true,
     log = msg => doLog && console.log(msg);
 
@@ -214,18 +213,48 @@ Cver.prototype.createBlocks = function () {
     });
 };
 
+/*
 Cver.prototype.runMalta = function () {
-    
     const self = this;
     return () => Balle.one(resolve => {
         log('\t@runMalta');
         malta.check([
             `#out/source/${self.config.tpl.name}.html`, 'out',
-            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-html2pdf`,
+            `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${self.config.translate.to}"]...malta-rename[to:"${self.config.outName}_${self.config.translate.to}.html"]...malta-html2pdf`,
             '-options=showPath:false,verbose:0'
         ]).start().then(() => {
             log('\t@runMalta V');
             resolve();
+        });
+    });
+};
+*/
+
+Cver.prototype.runMalta = function () {
+    log('\t\t@createStyles');
+    const self = this,
+        targetLangs = self.config.translate.to instanceof Array
+            ? self.config.translate.to
+            : [self.config.translate.to];
+
+    return () => Balle.one((resolve, reject) => {
+        Balle.chain(
+            targetLangs.map(lang => () => Balle.one(resolve => {
+                log(`\t@runMalta for lang ${lang}`);
+                Malta.get().check([
+                    `#out/source/${self.config.tpl.name}.html`, 'out',
+                    `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf`,
+                    '-options=showPath:false,verbose:0'
+                ]).start().then(() => {
+                    log(`\t@runMalta for lang ${lang} V`);
+                    resolve();
+                });
+            }))
+        ).then(() => {
+            log('\t\t@createStyles V');
+            resolve();
+        }).catch(e => {
+            reject(e);
         });
     });
 };
