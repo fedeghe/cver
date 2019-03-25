@@ -41,6 +41,7 @@ and check the content of the `out` folder when done.
 ##### Development todoList
 - [x] create the P.O.C. based on trial templates, components and styles
 - [ ] finalize the config structure
+    - [ ] sub-blocks added
 - [ ] document the config structure
 - [ ] create a decent set of blocks, styles, and document them
 - [ ] document how new blocks/styles can be added and consumed
