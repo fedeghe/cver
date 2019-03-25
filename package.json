@@ -30,7 +30,7 @@
     "malta-js-uglify": "^1.0.5",
     "malta-less": "^1.0.6",
     "malta-rename": "^1.0.3",
-    "malta-translate": "^1.0.7",
+    "malta-translate": "^1.0.9",
     "searchhash": "^1.0.23"
   },
   "devDependencies": {
