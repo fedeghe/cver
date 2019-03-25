@@ -64,7 +64,7 @@ Cver.prototype.createVars = function () {
                 key = d.obj.alias;
                 break;
             case 'name' in d.obj:
-                key = d.obj.name.replace(/^core\//, '');
+                key = d.obj.name.replace(/^\w*\//, ''); // remove `whatever/` useful only for separation of header & body & footer
                 break;
             case 'parentKey' in d:
                 key = d.parentKey;
@@ -173,10 +173,14 @@ Cver.prototype.createBlocks = function () {
     log('\t\t@createBlocks');
     const self = this;
     let elements = sh.forKey(self.config, 'blocks');
-    // console.log(elements);
+    
     elements = elements.reduce(
-        (acc, blk) => acc.concat(blk.obj),
-        []
+        (acc, blk) => {
+            if (blk.level === 1) {
+                blk.obj.isRoot = true;
+            }
+            return acc.concat(blk.obj);
+        }, []
     );
 
     return () => Balle.one((resolve, reject) => {
@@ -186,7 +190,7 @@ Cver.prototype.createBlocks = function () {
         Balle.chain(
             elements.map(
                 element => () => Balle.one((resolve, reject) => {
-                    const elementPath = element.type === 'template'
+                    const elementPath = element.isRoot
                         ? `dist/tpls/${element.name}/index.html`
                         : `dist/blocks/${element.name}.html`;
 
@@ -205,8 +209,8 @@ Cver.prototype.createBlocks = function () {
                         }, '');
                     }
                     fs.writeFile(
-                        `${self.config.outFolder}/source/${(element.alias || element.name).replace(/^core\//, '')}.html`,
-                        content.replace(`%inner_blocks%`, blocksContent),
+                        `${self.config.outFolder}/source/${(element.alias || element.name).replace(/^\w*\//, '')}.html`,
+                        content.replace(`%$innerBlocksLabel$%`, blocksContent),
                         { encoding: 'utf-8' },
                         (err) => {
                             err ? reject(err) : resolve();
