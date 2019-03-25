@@ -9,10 +9,10 @@ try {
             },
             body: {
                 component1: {
-                    content: 'i18n[il mio contenuto]'
+                    content: 'i18n[Esperienze Lavorative]'
                 },
                 component2: {
-                    content: 'i18n[un commento]'
+                    content: 'i18n[Capacita tecniche]'
                 }
             }
         },
@@ -72,7 +72,7 @@ try {
                 },
                 footer: {
                     data: {
-                        name: 'i18n[il mio piede]'
+                        made: 'Built on __DATE__ using <a href="$cverGithub$">cver</a>'
                     },
                     blocks: [{
                         name: 'footer1',
