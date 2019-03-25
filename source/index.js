@@ -72,13 +72,26 @@ try {
                 },
                 footer: {
                     data: {
+                        name: 'i18n[Questa é la fine]',
                         made: 'Built on __DATE__ using <a href="$cverGithub$">cver</a>'
                     },
                     blocks: [{
                         name: 'footer1',
                         data: {
                             name: 'Erol'
-                        }
+                        },
+                        blocks: [{
+                            name: 'footer2',
+                            data: {
+                                name: 'josef'
+                            }
+                        }, {
+                            name: 'footer2',
+                            alias: 'footerx',
+                            data: {
+                                name: 'federico'
+                            }
+                        }]
                     }]
                 }
             }

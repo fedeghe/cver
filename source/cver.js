@@ -171,8 +171,11 @@ Cver.prototype.createStyles = function () {
 
 Cver.prototype.createBlocks = function () {
     log('\t\t@createBlocks');
-    const self = this;
-
+    const self = this,
+        blocks = sh.forKey(self.config, 'blocks').reduce(
+            (acc, blk) => acc.concat(blk.obj.blocks),
+            []
+        );
     return () => Balle.one((resolve, reject) => {
         Balle.chain(['header', 'body', 'footer'].map(el => () => Balle.one(
             (resolve, reject) => {
@@ -188,18 +191,14 @@ Cver.prototype.createBlocks = function () {
 
                 fs.writeFile(
                     `${self.config.outFolder}/source/${el}.html`,
-                    sectionContent.replace(`%${el}_blocks%`, blocksContent),
+                    sectionContent.replace(`%inner_blocks%`, blocksContent),
                     err => {
                         err ? reject(err) : resolve();
                     }
                 );
             })
         ).concat(
-            [].concat(
-                self.config.tpl.header.blocks,
-                self.config.tpl.body.blocks,
-                self.config.tpl.footer.blocks
-            ).map(
+            blocks.map(
                 block => () => Balle.one((resolve, reject) => {
                     let content = fs.readFileSync(`dist/blocks/${block.name}.html`, { encoding: 'utf-8' });
                     if (block.alias) {
@@ -215,17 +214,6 @@ Cver.prototype.createBlocks = function () {
                             err ? reject(err) : resolve();
                         }
                     );
-                    /*
-                    fs.copyFile(
-                        `dist/blocks/${block.name}.html`,
-                        `${self.config.outFolder}/source/${block.name}.html`,
-                        (err) => {
-                            err ? reject(err) : resolve();
-                        }
-                    );
-                    */
-
-
                 })
             )
         )).then(() => {
