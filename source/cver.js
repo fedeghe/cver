@@ -64,7 +64,7 @@ Cver.prototype.createVars = function () {
                 key = d.obj.alias;
                 break;
             case 'name' in d.obj:
-                key = d.obj.name;
+                key = d.obj.name.replace(/^core\//, '');
                 break;
             case 'parentKey' in d:
                 key = d.parentKey;
@@ -78,7 +78,7 @@ Cver.prototype.createVars = function () {
     });
 
     return () => Balle.one(resolve => {
-        fs.writeFile(varsFile, JSON.stringify(baseObj), (err) => {
+        fs.writeFile(varsFile, JSON.stringify(baseObj, null, '\t'), (err) => {
             if (err) {
                 log(err);
                 throw err;
@@ -171,44 +171,42 @@ Cver.prototype.createStyles = function () {
 
 Cver.prototype.createBlocks = function () {
     log('\t\t@createBlocks');
-    const self = this,
-        blocks = sh.forKey(self.config, 'blocks').reduce(
-            (acc, blk) => acc.concat(blk.obj.blocks),
-            []
-        );
+    const self = this;
+    let elements = sh.forKey(self.config, 'blocks');
+    // console.log(elements);
+    elements = elements.reduce(
+        (acc, blk) => acc.concat(blk.obj),
+        []
+    );
+
     return () => Balle.one((resolve, reject) => {
-        Balle.chain(['header', 'body', 'footer'].map(el => () => Balle.one(
-            (resolve, reject) => {
-                let sectionContent = fs.readFileSync(`dist/blocks/core/${el}.html`, { encoding: 'utf-8' }),
-                    blocksContent = '';
+        /**
+         * rem: chain expects an array of functions each returning a promise
+         */
+        Balle.chain(
+            elements.map(
+                element => () => Balle.one((resolve, reject) => {
+                    const elementPath = element.type === 'template'
+                        ? `dist/tpls/${element.name}/index.html`
+                        : `dist/blocks/${element.name}.html`;
 
-                if (self.config.tpl[el].blocks) {
-                    blocksContent = self.config.tpl[el].blocks.reduce((acc, current) => {
-                        const content = `$$$$${current.alias || current.name}.html$$$$`;
-                        return [acc, content].join('\n');
-                    }, '');
-                }
+                    let content = fs.readFileSync(elementPath, { encoding: 'utf-8' }),
+                        blocksContent = '';
 
-                fs.writeFile(
-                    `${self.config.outFolder}/source/${el}.html`,
-                    sectionContent.replace(`%inner_blocks%`, blocksContent),
-                    err => {
-                        err ? reject(err) : resolve();
-                    }
-                );
-            })
-        ).concat(
-            blocks.map(
-                block => () => Balle.one((resolve, reject) => {
-                    let content = fs.readFileSync(`dist/blocks/${block.name}.html`, { encoding: 'utf-8' });
-                    if (block.alias) {
-                        while (content.indexOf(`$${block.name}.`) >= 0) {
-                            content = content.replace(`$${block.name}.`, `$${block.alias}.`);
+                    if (element.alias) {
+                        while (content.indexOf(`$${element.name}.`) >= 0) {
+                            content = content.replace(`$${element.name}.`, `$${element.alias}.`);
                         }
                     }
+                    if (element.blocks) {
+                        blocksContent = element.blocks.reduce((acc, current) => {
+                            const content = `$$$$${current.alias || current.name}.html$$$$`;
+                            return [acc, content].join('\n');
+                        }, '');
+                    }
                     fs.writeFile(
-                        `${self.config.outFolder}/source/${block.alias || block.name}.html`,
-                        content,
+                        `${self.config.outFolder}/source/${(element.alias || element.name).replace(/^core\//, '')}.html`,
+                        content.replace(`%inner_blocks%`, blocksContent),
                         { encoding: 'utf-8' },
                         (err) => {
                             err ? reject(err) : resolve();
@@ -216,7 +214,7 @@ Cver.prototype.createBlocks = function () {
                     );
                 })
             )
-        )).then(() => {
+        ).then(() => {
             log('\t\t@createBlocks V');
             resolve();
         }).catch(e => {

@@ -27,13 +27,14 @@ try {
             },
             tpl: {
                 name: 'one',
+                type: 'template',
                 theme: 'dark',
                 data: {
                     title: labels.header.title,
                     name: 'Federico Ghedina'
                 },
-                // style: 'dark',
-                header: {
+                blocks: [{
+                    name: 'core/header',
                     data: {
                         name: 'Federico Ghedina',
                         title: 'Curriculum vitae'
@@ -52,8 +53,8 @@ try {
                             npm: 'https://www.npmjs.com/~fedeghe'
                         }
                     }]
-                },
-                body: {
+                }, {
+                    name: 'core/body',
                     data: {
                         title: 'body title'
                     },
@@ -69,8 +70,8 @@ try {
                             content: labels.body.component2.content
                         }
                     }]
-                },
-                footer: {
+                }, {
+                    name: 'core/footer',
                     data: {
                         name: 'i18n[Questa é la fine]',
                         made: 'Built on __DATE__ using <a href="$cverGithub$">cver</a>'
@@ -83,17 +84,17 @@ try {
                         blocks: [{
                             name: 'footer2',
                             data: {
-                                name: 'josef'
+                                name: 'footer 2'
                             }
                         }, {
                             name: 'footer2',
                             alias: 'footerx',
                             data: {
-                                name: 'federico'
+                                name: 'footer x'
                             }
                         }]
                     }]
-                }
+                }]
             }
         };
     cver.setup(config);
