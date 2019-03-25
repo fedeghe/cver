@@ -42,7 +42,7 @@ try {
                         name: 'header1',
                         data: {
                             content: 'contatto skype',
-                            img: 'http://www.jmvc.org/fg.jpg',
+                            img: 'http://www.jmvc.org/fedeghe.jpeg',
                             title: labels.header.title,
                             email: 'federico.ghedina@gmail.com',
                             mobile: '+49 162 7305989',
