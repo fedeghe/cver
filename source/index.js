@@ -28,7 +28,7 @@ try {
             tpl: {
                 name: 'one',
                 type: 'template',
-                theme: 'dark',
+                theme: 'light',
                 data: {
                     title: labels.header.title,
                     name: 'Federico Ghedina'
