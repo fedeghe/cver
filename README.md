@@ -1,4 +1,4 @@
-![cver logo](https://raw.githubusercontent.com/fedeghe/cver/master/source/cver.svg)  
+![cver logo](https://raw.githubusercontent.com/fedeghe/cver/master/source/cvermini.png)  
 ---
 #### Purpose
 
