@@ -15,7 +15,7 @@ function Cver () {
 }
 
 Cver.prototype.time = function (msg) {
-    this.times.push(+new Date);
+    this.times.push(+new Date());
     const len = this.times.length;
     if (time) {
         console.log(`${msg} in ${this.times[len - 1] - this.times[len - 2]}ms`);
@@ -26,7 +26,7 @@ Cver.prototype.setup = function (config) {
 };
 
 Cver.prototype.print = function () {
-    this.times.push(+new Date);
+    this.times.push(+new Date());
     log('@print');
     const self = this;
     Balle.chain([
@@ -184,7 +184,7 @@ Cver.prototype.createBlocks = function () {
     log('\t\t@createBlocks');
     const self = this;
     let elements = sh.forKey(self.config, 'blocks');
-    
+
     elements = elements.reduce(
         (acc, blk) => {
             if (blk.level === 1) {
