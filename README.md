@@ -2,7 +2,7 @@
 ---
 #### Purpose
 
-Provide a programmatic flexible and easy way to create cool automatically translated CVs in pdf format.
+Provide a programmatic, flexible and easy way to create cool automatically translated CVs in pdf format.
 
 #### How
 Given a config file, which basically contains informations about which blocks and style to use, and obviously the text content for each of those. You can write the text in almost any language and get the output pdf in any other; more or less as follows:
