@@ -50,7 +50,7 @@ try {
                             skype: 'federico.ghedina',
                             linkedin: 'http://www.linkedin.com/in/federicoghedina',
                             github: 'https://github.com/fedeghe',
-                            npm: 'https://www.npmjs.com/~fedeghe'
+                            npm: 'https://www.npmjs.com/~fedeghe',
                             blocks: null
                         }
                     }]
