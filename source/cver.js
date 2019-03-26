@@ -62,8 +62,8 @@ Cver.prototype.createVars = function () {
     let baseObj = {
         cverGithub: 'https://github.com/fedeghe/cver',
         cverNpm: 'https://github.com/fedeghe/cver',
-        cverAuthor: 'Federico Ghedina <fedeghe@gmail.com>',
-        cverVersion: '0.0.2'
+        cverAuthor: '$PACKAGE.author$',
+        cverVersion: '$PACKAGE.version$'
     };
     data.forEach(d => {
         let key = null;
