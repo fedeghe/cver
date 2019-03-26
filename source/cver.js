@@ -3,22 +3,30 @@ const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
     sh = require('searchhash'),
-    doLog = true,
+    doLog = false,
+    time = true,
     log = msg => doLog && console.log(msg);
 
 function Cver () {
-    this.times = {};
-    this.times.start = new Date();
+    this.times = [];
     this.config = null;
     this.ready = false;
     this.root = process.cwd();
 }
 
+Cver.prototype.time = function (msg) {
+    this.times.push(+new Date);
+    const len = this.times.length;
+    if (time) {
+        console.log(`${msg} in ${this.times[len - 1] - this.times[len - 2]}ms`);
+    }
+};
 Cver.prototype.setup = function (config) {
     this.config = config;
 };
 
 Cver.prototype.print = function () {
+    this.times.push(+new Date);
     log('@print');
     const self = this;
     Balle.chain([
@@ -54,8 +62,8 @@ Cver.prototype.createVars = function () {
     let baseObj = {
         cverGithub: 'https://github.com/fedeghe/cver',
         cverNpm: 'https://github.com/fedeghe/cver',
-        cverAuthor: '$PACKAGE.author$',
-        cverVersion: '$PACKAGE.version$'
+        cverAuthor: 'Federico Ghedina <fedeghe@gmail.com>',
+        cverVersion: '0.0.2'
     };
     data.forEach(d => {
         let key = null;
@@ -112,6 +120,7 @@ Cver.prototype.createOutDir = function () {
             })
         ]).then(() => {
             log('\t\t@createOutDir V');
+            this.time('outdir created');
             resolve();
         });
     });
@@ -129,6 +138,7 @@ Cver.prototype.createTpl = function () {
                     reject(err);
                 } else {
                     log('\t\t@createTpl V');
+                    this.time('tpl created');
                     resolve();
                 }
             }
@@ -162,6 +172,7 @@ Cver.prototype.createStyles = function () {
             })
         ]).then(() => {
             log('\t\t@createStyles V');
+            this.time('styles created');
             resolve();
         }).catch(e => {
             reject(e);
@@ -210,7 +221,7 @@ Cver.prototype.createBlocks = function () {
                     }
                     fs.writeFile(
                         `${self.config.outFolder}/source/${(element.alias || element.name).replace(/^\w*\//, '')}.html`,
-                        content.replace(`%$innerBlocksLabel$%`, blocksContent),
+                        content.replace(`%blocks%`, blocksContent),
                         { encoding: 'utf-8' },
                         (err) => {
                             err ? reject(err) : resolve();
@@ -220,6 +231,7 @@ Cver.prototype.createBlocks = function () {
             )
         ).then(() => {
             log('\t\t@createBlocks V');
+            this.time('blocks created');
             resolve();
         }).catch(e => {
             reject(e);
@@ -250,6 +262,7 @@ Cver.prototype.runMalta = function () {
             }))
         ).then(() => {
             log('\t@runMaltas V');
+            this.time('malta ran');
             resolve();
         }).catch(e => {
             reject(e);
