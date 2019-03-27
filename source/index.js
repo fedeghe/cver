@@ -71,7 +71,6 @@ try {
                             }
                         }, {
                             name: 'keyValue',
-                            // alias: 'dataNasc',
                             data: {
                                 key: 'i18n[Data di nascita]',
                                 value: '20 /9 / 1976'
@@ -84,7 +83,6 @@ try {
                         }
                     }, {
                         name: 'component1',
-                        // alias: 'componentx',
                         data: {
                             content: labels.body.component2.content
                         }
@@ -107,7 +105,6 @@ try {
                             }
                         }, {
                             name: 'footer2',
-                            // alias: 'footerx',
                             data: {
                                 name: 'footer x'
                             }
