@@ -272,14 +272,19 @@ Cver.prototype.runMalta = function () {
         Balle.chain(
             targetLangs.map(lang => () => Balle.one(resolve => {
                 log(`\t\t@runMalta for lang ${lang}`);
-                Malta.get().check([
-                    `#out/source/${self.config.tpl.name}.html`, 'out',
-                    `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf[format:"${self.config.format}",border:"0.2in"]`,
-                    '-options=showPath:false,verbose:0'
-                ]).start().then(() => {
-                    log(`\t\t@runMalta for lang ${lang} V`);
-                    resolve();
-                });
+
+                try {
+                    Malta.get().check([
+                        `#out/source/${self.config.tpl.name}.html`, 'out',
+                        `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf[format:"${self.config.format}",border:"${self.config.border}"]`,
+                        '-options=showPath:false,verbose:0'
+                    ]).start().then(() => {
+                        log(`\t\t@runMalta for lang ${lang} V`);
+                        resolve();
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
             }))
         ).then(() => {
             log('\t@runMaltas V');
