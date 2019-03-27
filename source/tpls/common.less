@@ -21,6 +21,10 @@
 
 body {
     font-size: 0.5em;
+    height:100vw;
+    strong {
+        font-weight: bold;
+    }
     img.profile-image {
         width:100px !important;
         margin-right:20px;
@@ -29,6 +33,9 @@ body {
         -webkit-border-radius:5px;
         border-radius:5px;
     }
+    .center {text-align:center}
+    .left {text-align:left}
+    .right {text-align:right}
     pre {
         font-family:monospace;
     }
@@ -50,10 +57,30 @@ body {
         list-style-type: none;
         padding:0px;
         margin:0px;
+        &.section {
+            li {
+                line-height:1.2em;
+                margin-bottom:1em;
+            }
+        }
+        &.ulspaced {
+            li {
+                margin-bottom:2em;
+            }
+        }
     }
 
     ul li {
         margin-bottom : 0.3em;
+        line-height:2em;
+    }
+    div.section {
+        border:none;
+        border-top:1px dotted #999;
+        padding:0px;
+        margin-top:20px;
+        padding-top:20px;
+        width:100%;
     }
 
     hr{
