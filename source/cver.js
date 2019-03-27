@@ -78,7 +78,6 @@ Cver.prototype.createVars = function () {
             });
         };
     fixConfig();
-    console.log(JSON.stringify(self.config));
 
     let data = sh.forKey(self.config, 'data'),
         baseObj = {
