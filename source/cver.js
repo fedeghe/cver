@@ -55,16 +55,38 @@ Cver.prototype.process = function () {
 };
 
 Cver.prototype.createVars = function () {
-    log('\t\t@createVars'); const self = this,
+    log('\t\t@createVars');
+    const self = this,
         varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
-        data = sh.forKey(self.config, 'data');
+        fixConfig = () => {
+            let cache = {};
+            const blks = sh.forKey(self.config, 'data');
+            blks.forEach(blk => {
+                // add blocksif not present
+                if (!('blocks' in blk.obj)) {
+                    blk.obj.blocks = [];
+                }
+                // add alias if needed
+                blk.obj.blocks.forEach(b => {
+                    if (b.name in cache) {
+                        b.alias = `${b.name}_${cache[b.name]}`;
+                        cache[b.name]++;
+                    } else {
+                        cache[b.name] = 0;
+                    }
+                });
+            });
+        };
+    fixConfig();
+    console.log(JSON.stringify(self.config));
 
-    let baseObj = {
-        cverGithub: 'https://github.com/fedeghe/cver',
-        cverNpm: 'https://github.com/fedeghe/cver',
-        cverAuthor: '$PACKAGE.author$',
-        cverVersion: '$PACKAGE.version$'
-    };
+    let data = sh.forKey(self.config, 'data'),
+        baseObj = {
+            cverGithub: 'https://github.com/fedeghe/cver',
+            cverNpm: 'https://github.com/fedeghe/cver',
+            cverAuthor: '$PACKAGE.author$',
+            cverVersion: '$PACKAGE.version$'
+        };
     data.forEach(d => {
         let key = null;
         switch (true) {

@@ -51,8 +51,7 @@ try {
                             linkedin: 'http://www.linkedin.com/in/federicoghedina',
                             github: 'https://github.com/fedeghe',
                             npm: 'https://www.npmjs.com/~fedeghe'
-                        },
-                        blocks: null
+                        }
                     }]
                 }, {
                     name: 'core/body',
@@ -69,30 +68,26 @@ try {
                             data: {
                                 key: 'i18n[Luogo di nascita]',
                                 value: 'i18n[Padova]'
-                            },
-                            blocks: null
+                            }
                         }, {
                             name: 'keyValue',
-                            alias: 'dataNasc',
+                            // alias: 'dataNasc',
                             data: {
                                 key: 'i18n[Data di nascita]',
                                 value: '20 /9 / 1976'
-                            },
-                            blocks: null
+                            }
                         }]
                     }, {
                         name: 'component1',
                         data: {
                             content: labels.body.component1.content
-                        },
-                        blocks: null
+                        }
                     }, {
                         name: 'component1',
-                        alias: 'componentx',
+                        // alias: 'componentx',
                         data: {
                             content: labels.body.component2.content
-                        },
-                        blocks: null
+                        }
                     }]
                 }, {
                     name: 'core/footer',
@@ -109,15 +104,13 @@ try {
                             name: 'footer2',
                             data: {
                                 name: 'footer 2'
-                            },
-                            blocks: null
+                            }
                         }, {
                             name: 'footer2',
-                            alias: 'footerx',
+                            // alias: 'footerx',
                             data: {
                                 name: 'footer x'
-                            },
-                            blocks: null
+                            }
                         }]
                     }]
                 }]
