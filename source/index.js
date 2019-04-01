@@ -3,20 +3,6 @@ try {
 
         cver = new Cver(),
 
-        labels = {
-            header: {
-                title: 'i18n[Presentazione]'
-            },
-            body: {
-                component1: {
-                    content: 'i18n[Esperienze Lavorative]'
-                },
-                component2: {
-                    content: 'i18n[Capacita tecniche]'
-                }
-            }
-        },
-
         config = {
             format: 'A4',
             outFolder: 'out',
@@ -31,21 +17,18 @@ try {
                 type: 'template',
                 theme: 'light',
                 data: {
-                    title: labels.header.title,
+                    title: 'i18n[Presentazione]',
                     name: 'Federico Ghedina'
                 },
                 blocks: [{
                     name: 'core/header',
-                    data: {
-                        name: 'Federico Ghedina',
-                        title: 'Curriculum vitae'
-                    },
                     blocks: [{
                         name: 'header1',
                         data: {
+                            name: 'Federico Ghedina',
+                            title: 'Curriculum vitae',
                             content: 'contatto skype',
                             img: 'http://www.jmvc.org/fedeghe.jpeg',
-                            title: labels.header.title,
                             email: 'federico.ghedina@gmail.com',
                             mobile: '+49 162 7305989',
                             skype: 'federico.ghedina',
@@ -60,34 +43,31 @@ try {
                         title: 'body title'
                     },
                     blocks: [{
-                        name: 'titledSection',
+                        name: 'TitledSection',
                         data: {
                             title: 'i18n[Informazioni personali]'
                         },
                         blocks: [{
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Luogo di nascita]', value: 'i18n[Padova]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Data di nascita]', value: '20 / 9 / 1976' }
                         }, {
-                            name: 'keyValue',
-                            data: { key: 'i18n[Residenza]', value: 'Kurfürstendamm 74, 10709, Berlin, Germany' }
+                            name: 'itemKeyValue',
+                            data: { key: 'i18n[Residenza]', value: 'Kurfürstendamm 74, 10709, Berlin, Germany' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Stato civile]', value: 'i18n[Sposato]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Nazionalitá]', value: 'i18n[Italiana]' }
-                        }, {
-                            name: 'keyValue',
-                            data: { key: 'i18n[Permesso]', value: 'EU' }
                         }]
                     }, {
-                        name: 'titledSection',
+                        name: 'TitledSection',
                         data: { title: 'i18n[Esperienze lavorative]' },
                         blocks: [{
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Ottobre 2018]',
                                 end: 'i18n[ora]',
@@ -97,7 +77,7 @@ try {
                                 description: 'i18n[tecnologie utilizzate]: React, Redux, StoryBook, pure javascript, ES6, Jest, NodeJs, Sass, Docker, MAC OS'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Ottobre 2017]',
                                 end: 'i18n[Ottobre 2018]',
@@ -107,17 +87,17 @@ try {
                                 description: 'i18n[tecnologie utilizzate]: React, Redux, pure javascript, ES6, Jest, Bootstrap, NodeJs, Sass, Microservices based backend, Swagger, Docker, MAC OS'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Gennaio 2015]',
                                 end: 'i18n[Settembre 2017]',
                                 company: 'Stailamedia AG',
                                 city: 'Zürich',
                                 role: 'Front-end Senior Developer',
-                                description: 'i18n[tecnologie utilizzate]: MAC OS, AWS, NodeJS, Mocha, Express, nginx, insane fast pure javascript, less, HTML5, Phantomjs, Selenium, MEAN stack (sails), Symfony'
+                                description: 'i18n[tecnologie utilizzate]: MAC OS, AWS, NodeJS, Mocha, Express, nginx, fast pure javascript, less, HTML5, Phantomjs, Selenium, MEAN stack (sails), Symfony'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Gennaio 2015]',
                                 end: 'i18n[Settembre 2017]',
@@ -127,7 +107,7 @@ try {
                                 description: 'i18n[tecnologie utilizzate]: linux Ubuntu, MAC OS, LAMP stack, XEAN stack (sails.js), pure javascript, HTM5, CSS3, jQuery, Angular.js, Bootstrap, Selenium, Modx, E4x, Rhinojs, NodeJS, Jasmine, Phantomjs, Karma'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Ottobre 2008]',
                                 end: 'i18n[Febbraio 2012]',
@@ -137,7 +117,7 @@ try {
                                 description: 'i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Backbone, Bootstrap, Selenium, Modx, pure javascript, HTML5, CSS3'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Giugno 2007]',
                                 end: 'i18n[Ottobre 2008]',
@@ -147,7 +127,7 @@ try {
                                 description: 'i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Selenium, CodeIgniter, pure javascript, HTML, CSS'
                             }
                         }, {
-                            name: 'periodDescription',
+                            name: 'itemPeriodDescription',
                             data: {
                                 start: 'i18n[Giugno 2006]',
                                 end: 'i18n[Gennaio 2008]',
@@ -158,12 +138,12 @@ try {
                             }
                         }]
                     }, {
-                        name: 'titledSection',
+                        name: 'TitledSection',
                         data: {
                             title: 'i18n[Istruzione]'
                         },
                         blocks: [{
-                            name: 'instructionItem',
+                            name: 'itemInstruction',
                             data: {
                                 year: 2006,
                                 what: 'i18n[Laurea in ingegneria informatica - Universitá di Padova]',
@@ -174,24 +154,24 @@ try {
                             }
                         }]
                     }, {
-                        name: 'titledSection',
+                        name: 'TitledSection',
                         data: {
                             title: 'i18n[Conoscenza lingue]'
                         },
                         blocks: [{
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Italiano]', value: 'i18n[lingua nativa]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Inglese]', value: 'i18n[ottimo, scritto e parlato]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Francese]', value: 'i18n[discreto]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Spagnolo]', value: 'i18n[elementare]' }
                         }, {
-                            name: 'keyValue',
+                            name: 'itemKeyValue',
                             data: { key: 'i18n[Tedesco]', value: 'i18n[elementare]' }
                         }]
                     }]
@@ -200,24 +180,7 @@ try {
                     data: {
                         name: 'i18n[Questa é la fine]',
                         made: 'Built on __DATE__ using <a href="$cverGithub$">cver</a>'
-                    },
-                    blocks: [{
-                        name: 'footer1',
-                        data: {
-                            name: 'Erol'
-                        },
-                        blocks: [{
-                            name: 'footer2',
-                            data: {
-                                name: 'footer 2'
-                            }
-                        }, {
-                            name: 'footer2',
-                            data: {
-                                name: 'footer x'
-                            }
-                        }]
-                    }]
+                    }
                 }]
             }
         };

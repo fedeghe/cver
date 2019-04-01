@@ -95,9 +95,9 @@ Cver.prototype.createVars = function () {
             case 'name' in d.obj:
                 key = d.obj.name.replace(/^\w*\//, ''); // remove `whatever/` useful only for separation of header & body & footer
                 break;
-            case 'parentKey' in d:
-                key = d.parentKey;
-                break;
+            // case 'parentKey' in d:
+            //     key = d.parentKey;
+            //     break;
             default:;
         }
         baseObj[key] = baseObj[key] || {};
