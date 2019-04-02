@@ -138,7 +138,6 @@ Cver.prototype.createOutDir = function () {
 };
 
 Cver.prototype.createTpl = function () {
-
     const self = this;
     return () => Balle.one((resolve, reject) => {
         fs.copyFile(
@@ -228,11 +227,9 @@ Cver.prototype.createBlocks = function () {
                     }
                     fs.writeFile(
                         `${self.config.outFolder}/source/${(element.alias || element.name).replace(/^\w*\//, '')}.html`,
-                        content.replace(`%blocks%`, blocksContent),
+                        content.replace('%blocks%', blocksContent),
                         { encoding: 'utf-8' },
-                        (err) => {
-                            err ? reject(err) : resolve();
-                        }
+                        err => err ? reject(err) : resolve()
                     );
                 })
             )
@@ -244,7 +241,6 @@ Cver.prototype.createBlocks = function () {
         });
     });
 };
-
 
 Cver.prototype.runMalta = function () {
     const self = this,
@@ -264,7 +260,6 @@ Cver.prototype.runMalta = function () {
                         console.log(`ran Malta for lang ${lang}`);
                         resolve();
                     });
-
                 } catch (e) {
                     console.log(e);
                 }
