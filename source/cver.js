@@ -3,9 +3,7 @@ const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
     sh = require('searchhash'),
-    doLog = false,
-    time = true,
-    log = msg => doLog && console.log(msg);
+    time = true;
 
 function Cver () {
     this.times = [];
@@ -27,21 +25,18 @@ Cver.prototype.setup = function (config) {
 
 Cver.prototype.print = function () {
     this.times.push(+new Date());
-    log('@print');
     const self = this;
     Balle.chain([
         self.process(),
         self.runMalta()
     ]).then(() => {
-        log('@print V');
-        log('done');
+        console.log('...done');
     });
 };
 
 Cver.prototype.process = function () {
     const self = this;
     return () => Balle.one(resolve => {
-        log('\t@process');
         Balle.chain([
             self.createOutDir(),
             self.createVars(),
@@ -49,19 +44,18 @@ Cver.prototype.process = function () {
             self.createStyles(),
             self.createBlocks()
         ]).then(() => {
-            log('\t@process V'); resolve();
+            resolve();
         });
     });
 };
 
 Cver.prototype.createVars = function () {
-    log('\t\t@createVars');
     const self = this,
+        data = sh.forKey(self.config, 'data'),
         varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
         fixConfig = () => {
             let cache = {};
-            const blks = sh.forKey(self.config, 'data');
-            blks.forEach(blk => {
+            data.forEach(blk => {
                 // add blocksif not present
                 if (!('blocks' in blk.obj)) {
                     blk.obj.blocks = [];
@@ -79,13 +73,12 @@ Cver.prototype.createVars = function () {
         };
     fixConfig();
 
-    let data = sh.forKey(self.config, 'data'),
-        baseObj = {
-            cverGithub: 'https://github.com/fedeghe/cver',
-            cverNpm: 'https://github.com/fedeghe/cver',
-            cverAuthor: '$PACKAGE.author$',
-            cverVersion: '$PACKAGE.version$'
-        };
+    let baseObj = {
+        cverGithub: 'https://github.com/fedeghe/cver',
+        cverNpm: 'https://github.com/fedeghe/cver',
+        cverAuthor: '$PACKAGE.author$',
+        cverVersion: '$PACKAGE.version$'
+    };
     data.forEach(d => {
         let key = null;
         switch (true) {
@@ -109,17 +102,15 @@ Cver.prototype.createVars = function () {
     return () => Balle.one(resolve => {
         fs.writeFile(varsFile, JSON.stringify(baseObj, null, '\t'), (err) => {
             if (err) {
-                log(err);
+                console.log(err);
                 throw err;
             }
-            log('\t\t@createVars V');
             resolve();
         });
     });
 };
 
 Cver.prototype.createOutDir = function () {
-    log('\t\t@createOutDir');
     const self = this;
     return () => Balle.one(resolve => {
         Balle.chain([
@@ -140,7 +131,6 @@ Cver.prototype.createOutDir = function () {
                 });
             })
         ]).then(() => {
-            log('\t\t@createOutDir V');
             this.time('outdir created');
             resolve();
         });
@@ -148,7 +138,7 @@ Cver.prototype.createOutDir = function () {
 };
 
 Cver.prototype.createTpl = function () {
-    log('\t\t@createTpl');
+
     const self = this;
     return () => Balle.one((resolve, reject) => {
         fs.copyFile(
@@ -158,7 +148,6 @@ Cver.prototype.createTpl = function () {
                 if (err) {
                     reject(err);
                 } else {
-                    log('\t\t@createTpl V');
                     this.time('tpl created');
                     resolve();
                 }
@@ -168,7 +157,6 @@ Cver.prototype.createTpl = function () {
 };
 
 Cver.prototype.createStyles = function () {
-    log('\t\t@createStyles');
     const self = this;
 
     return () => Balle.one((resolve, reject) => {
@@ -192,7 +180,6 @@ Cver.prototype.createStyles = function () {
                 );
             })
         ]).then(() => {
-            log('\t\t@createStyles V');
             this.time('styles created');
             resolve();
         }).catch(e => {
@@ -202,7 +189,6 @@ Cver.prototype.createStyles = function () {
 };
 
 Cver.prototype.createBlocks = function () {
-    log('\t\t@createBlocks');
     const self = this;
     let elements = sh.forKey(self.config, 'blocks');
 
@@ -224,7 +210,7 @@ Cver.prototype.createBlocks = function () {
                 element => () => Balle.one((resolve, reject) => {
                     const elementPath = element.isRoot
                         ? `dist/tpls/${element.name}/index.html`
-                        : `dist/blocks/${element.name}.html`;
+                        : `dist/tpls/${self.config.tpl.name}/blocks/${element.name}.html`;
 
                     let content = fs.readFileSync(elementPath, { encoding: 'utf-8' }),
                         blocksContent = '';
@@ -251,7 +237,6 @@ Cver.prototype.createBlocks = function () {
                 })
             )
         ).then(() => {
-            log('\t\t@createBlocks V');
             this.time('blocks created');
             resolve();
         }).catch(e => {
@@ -268,26 +253,23 @@ Cver.prototype.runMalta = function () {
             : [self.config.translate.to];
 
     return () => Balle.one((resolve, reject) => {
-        log('\t@runMaltas');
         Balle.chain(
             targetLangs.map(lang => () => Balle.one(resolve => {
-                log(`\t\t@runMalta for lang ${lang}`);
-
                 try {
                     Malta.get().check([
                         `#out/source/${self.config.tpl.name}.html`, 'out',
                         `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf[format:"${self.config.format}",border:"${self.config.border}"]`,
                         '-options=showPath:false,verbose:0'
                     ]).start().then(() => {
-                        log(`\t\t@runMalta for lang ${lang} V`);
+                        console.log(`ran Malta for lang ${lang}`);
                         resolve();
                     });
+
                 } catch (e) {
                     console.log(e);
                 }
             }))
         ).then(() => {
-            log('\t@runMaltas V');
             this.time('malta ran');
             resolve();
         }).catch(e => {

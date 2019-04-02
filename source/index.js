@@ -10,7 +10,7 @@ try {
             outName: 'Federico_Ghedina_cv',
             translate: {
                 from: 'it',
-                to: ['en', 'de']
+                to: ['en', 'de', 'ja', 'zh-cn']
             },
             tpl: {
                 name: 'one',
