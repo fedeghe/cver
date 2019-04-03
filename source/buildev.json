@@ -1,9 +1,12 @@
 {
     "EXE": [
         "rm -rf dist",
-        "mkdir -p dist/tpls/one"
+        "mkdir -p dist/tpls/one",
+        "mkdir -p dist/configs"
     ],
     "source/*.js": "dist",
+    "source/configs/*.json": "dist/configs/",
     "source/tpls/common.less": "dist/tpls -plugins=malta-less",
-    "source/tpls/one/require.json": true
+    "source/tpls/one/require.json": true,
+    "source/tpls/exp/require.json": true
 }
