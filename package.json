@@ -1,7 +1,7 @@
 {
   "name": "cver",
   "version": "0.0.2",
-  "description": "",
+  "description": "generate translated europass cv",
   "main": "dist/index.js",
   "scripts": {
     "buildev": "malta source/buildev.json",
@@ -25,10 +25,11 @@
   },
   "dependencies": {
     "balle": "^1.0.36",
-    "malta": "^3.9.11",
+    "malta": "^3.9.13",
     "malta-html2pdf": "^1.0.2",
     "malta-js-uglify": "^1.0.5",
-    "malta-less": "^1.0.6",
+    "malta-json-minify": "^1.0.4",
+    "malta-less": "^1.0.7",
     "malta-rename": "^1.0.3",
     "malta-translate": "^1.0.10",
     "searchhash": "^1.0.23"
