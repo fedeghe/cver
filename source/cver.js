@@ -1,4 +1,6 @@
+
 /* eslint-disable no-console */
+
 const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
@@ -162,7 +164,7 @@ Cver.prototype.createStyles = function () {
         Balle.chain([
             () => Balle.one((resolve, reject) => {
                 fs.copyFile(
-                    `dist/tpls/common.css`,
+                    'dist/tpls/common.css',
                     `${self.config.outFolder}/source/common.css`,
                     (err) => {
                         err ? reject(err) : resolve();
@@ -171,7 +173,7 @@ Cver.prototype.createStyles = function () {
             }),
             () => Balle.one((resolve, reject) => {
                 fs.copyFile(
-                    `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme}.css`,
+                    `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme || 'base'}.css`,
                     `${self.config.outFolder}/source/style.css`,
                     (err) => {
                         err ? reject(err) : resolve();
@@ -250,11 +252,14 @@ Cver.prototype.runMalta = function () {
 
     return () => Balle.one((resolve, reject) => {
         Balle.chain(
-            targetLangs.map(lang => () => Balle.one(resolve => {
+            targetLangs.map(lang => () => Balle.one(resolve => {                
                 try {
+                    const outName = self.config.outName.match(/%lang%/)
+                        ? self.config.outName.replace('%lang%', lang)
+                        : `${self.config.outName}_${lang}`;
                     Malta.get().check([
                         `#out/source/${self.config.tpl.name}.html`, 'out',
-                        `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${self.config.outName}_${lang}.html"]...malta-html2pdf[format:"${self.config.format}",border:"${self.config.border}"]`,
+                        `-plugins=malta-translate[input:"${self.config.translate.from}",output:"${lang}"]...malta-rename[to:"${outName}.html"]...malta-html2pdf[format:"${self.config.format}",border:"${self.config.border}"]`,
                         '-options=showPath:false,verbose:0'
                     ]).start().then(() => {
                         console.log(`ran Malta for lang ${lang}`);
