@@ -1,0 +1,6 @@
+{
+    "EXE": [
+        "mkdir -p dist/tpls/zero"
+    ],
+    "source/tpls/zero/index.html": "dist/tpls/zero/ -options=justCopy:true"
+}

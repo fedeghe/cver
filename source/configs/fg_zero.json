@@ -1,0 +1,23 @@
+{
+    "print": {
+        "format": "A4",
+        "outFolder": "out",
+        "border": "0.2in",
+        "outName": "Federico_Ghedina_cv",
+        "translate": {
+            "from": "it",
+            "to": [
+                "en",
+                "de",
+                "ja",
+                "zh-cn"
+            ]
+        }
+    },	
+    "tpl": "one",
+    "themes": [ "light" ],
+    "data": {
+        "title": "i18n[Presentazione]",
+        "content": "This is my content"
+    }
+}

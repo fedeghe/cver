@@ -1,9 +1,8 @@
 {
     "EXE": [
-        "mkdir -p dist/tpls/one/blocks/core"
+        "mkdir -p dist/tpls/one/themes"
     ],
-    "source/tpls/one/blocks/core/*.html": "dist/tpls/one/blocks/core -options=justCopy:true",
-    "source/tpls/one/blocks/*.html": "dist/tpls/one/blocks -options=justCopy:true",
-    "source/tpls/one/index.html": "dist/tpls/one -options=justCopy:true",
-    "source/tpls/one/*.less": "dist/tpls/one -plugins=malta-less"
+    "source/tpls/one/index.html": "dist/tpls/one/ -options=justCopy:true",
+    "source/tpls/one/themes/*.less": "dist/tpls/one/themes -plugins=malta-less",
+    "source/tpls/one/blocks/require.json": true
 }

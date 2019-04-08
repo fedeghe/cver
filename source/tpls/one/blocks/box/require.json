@@ -1,0 +1,7 @@
+{
+    "EXE": [
+        "mkdir -p dist/tpls/one/blocks/box"
+    ],
+    "source/tpls/one/blocks/box/index.html": "dist/tpls/one/blocks/box -options=justCopy:true",
+    "source/tpls/one/blocks/box/style.less": "dist/tpls/one/blocks/box -plugins=malta-less"
+}

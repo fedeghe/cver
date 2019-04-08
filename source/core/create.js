@@ -1,5 +1,6 @@
 const path = require('path');
-const Cver = require('./cver');
+const Cver = require('./Cver');
+
 try {
     /**
      * do not require cver before removing the args cause they will be passed to Malta
@@ -14,10 +15,9 @@ try {
     const configPath = path.resolve(args[2]),
         config = require(configPath),
         // Cver = require('./cver'), // do not be tempted to hoist this require
-        cver = new Cver();
+        cver = new Cver(config);
 
-    cver.setup(config);
-    cver.print();
+    cver.start();
 } catch (e) {
     /* eslint-disable no-console */
     console.log(e);

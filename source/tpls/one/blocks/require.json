@@ -1,0 +1,9 @@
+{
+    "EXE": [
+        "mkdir -p dist/tpls/one/blocks"
+    ],
+    "source/tpls/one/blocks/body/require.json": true,
+    "source/tpls/one/blocks/box/require.json": true,
+    "source/tpls/one/blocks/list/require.json": true,
+    "source/tpls/one/blocks/listitem/require.json": true
+}
