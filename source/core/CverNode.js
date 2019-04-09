@@ -2,35 +2,65 @@ const fs = require('fs'),
     path = require('path'),
     Balle = require('balle');
 
-function CverNode (block, parent, solver, cache) {
+function CverNode (config, content, parent, solver) {
     const self = this;
-    console.log(block, parent, solver);
-    this.solvingSteps = [
-        0, // content
-        0, // %blocks%
-        0, // %theme%
-        0, // %common%
-        0 //  specific blocks placeholders
-    ];
+    this.config = config;
     this.parent = parent;
+    this.content = content;
     this.solver = solver;
-    this.tpl = block.tpl;
-    this.content = null;
+    this.tpl = config.tpl;
 
-    this.data = block.data || {};
-    this.blocks = block.blocks || [];
-    this.debit = this.blocks.length;
-    this.process().then(() => {
+    this.data = config.data || {};
+    this.blocks = config.blocks || [];
+    this.debit = 0;
+    this.scan().then(() => {
         console.log('results');
-        console.log(self.content);
+        self.solver();
     });
+
+    this.replacingStrategy = null;
 }
 
-CverNode.prototype.process = function () {
+CverNode.prototype.processBlocks = function (solver) {
+    console.log('process blocks');
     const self = this;
-    return Balle.one((res, rej) => {
-        res();
-    });
+    this.debit = this.config.blocks.length;
+    console.log(self.blocks);
+    solver();
+};
+
+CverNode.prototype.processPlaceholders = function (solver) {
+    console.log('process placeholders');
+    solver();
+};
+CverNode.prototype.straight = function (solver) {
+    console.log('process straight');
+    solver();
+};
+
+CverNode.prototype.scan = function () {
+    const self = this;
+    // console.log(self)
+    return Balle.chain([
+        () => Balle.one((res, rej) => {
+            // check %blocks%
+            if (self.content.match(/%blocks%/)) {
+                console.log('has %blocks%');
+                self.replacingStrategy = 'processBlocks';
+            } else
+            // check $placeholders$
+            if (self.content.match(/\$\$([a-z/.]*)\$\$/i)) {
+                console.log('has file placeholders');
+                self.replacingStrategy = 'processPlaceholders';
+            } else {
+                self.replacingStrategy = 'straight';
+            }
+            res();
+        }),
+        () => Balle.one((res, rej) => {
+            self[self.replacingStrategy](res);
+        })
+    ]);
 };
 
 CverNode.prototype.solve = function () {

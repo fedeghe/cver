@@ -35,23 +35,32 @@ Cver.prototype.start = function () {
     const self = this;
     return Balle.chain([
         () => self.prepare(),
-        () => self.dig(),
-        () => self.print()
-    ]);
-};
-
-Cver.prototype.dig = function () {
-    const self = this;
-    return Balle.one((res, rej) => {
-        console.log('....digging');
-        res();
+        (r) => self.dig(r),
+        (r) => self.print(r)
+    ]).then((res, rej) => {
+        console.log('result: ', res)
+    }).catch((e) => {
+        console.log(e);
+    }).finally(() => {
+        console.log('the end anyway')
     });
 };
-Cver.prototype.print = function () {
+
+Cver.prototype.dig = function (r) {
     const self = this;
     return Balle.one((res, rej) => {
+        console.log('..... start digging');
+        new CverNode(self.config, self.content, null, () => res(r));
+        // res();
+    });
+};
+
+Cver.prototype.print = function (r) {
+    const self = this;
+    return Balle.one((res, rej) => {
+        console.log('..... printing');
         // console.log(self.content);
-        res();
+        res(['zzzz', r]);
     });
 };
 
@@ -63,7 +72,7 @@ Cver.prototype.prepare = function () {
          */
         () => Balle.one((res, rej) => {
             self.content = Cache.get(self.tpl);
-            res();
+            res(1);
         }),
 
         /**
@@ -71,7 +80,7 @@ Cver.prototype.prepare = function () {
          * - both core/common and theme styles
          * - core/script
          */
-        () => Balle.one((res, rej) => {
+        (n) => Balle.one((res, rej) => {
             const common = fs.readFileSync(
                     path.resolve(`dist/tpls/common.css`),
                     { encoding: 'utf-8' }
@@ -83,13 +92,13 @@ Cver.prototype.prepare = function () {
                 script = fs.readFileSync(path.resolve(`dist/tpls/script.js`), { encoding: 'utf-8' });
 
             self.content = self.content.replace(/%core%/, `<script>${script}</script><style>${themeStyles}</style>`);
-            res();
+            res(n+2);
         }),
 
         /**
          * replace all local vars with values
          */
-        () => Balle.one((res, rej) => {            
+        (n) => Balle.one((res, rej) => {            
             for (let k in self.data) {
                 const rx = `\\$${self.tpl}.${k}\\$`;
                 while (self.content.match(new RegExp(rx, 'gm'))) {
@@ -99,9 +108,9 @@ Cver.prototype.prepare = function () {
                     );
                 }
             }
-            res();
+            res(n+3);
         })
-    ]);
+    ]).then( r => r);
 };
 
 module.exports = Cver;
