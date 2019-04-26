@@ -1,0 +1,84 @@
+Arguments: 
+  /Users/federicoghedina/.nvm/versions/node/v8.11.2/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js
+
+PATH: 
+  /Users/federicoghedina/Library/Android/sdk/build-tools/23.0.1:/Users/federicoghedina/Library/Android/sdk/platform-tools:/Users/federicoghedina/Library/Android/sdk/emulator:/Users/federicoghedina/Library/Android/sdk/tools:/Users/federicoghedina/.nvm/versions/node/v8.11.2/bin:/Users/federicoghedina/Library/Android/sdk/platform-tools:/Users/federicoghedina/.nvm/versions/node/v6.11.2:/usr/local/sbin:/usr/local/php5/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/federicoghedina/bin:/Applications/nwjs-sdk-v0.24.4-osx-x64/nwjs.app/Contents/MacOS:/usr/local/Cellar/kafka/1.0.0/bin:/usr/local/mongodb/bin
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  8.11.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.19.35:443 - Local (0.0.0.0:58496)
+      at Object._errnoException (util.js:992:11)
+      at _exceptionWithHostPort (util.js:1014:20)
+      at internalConnect (net.js:960:16)
+      at defaultTriggerAsyncIdScope (internal/async_hooks.js:284:19)
+      at emitLookup (net.js:1106:9)
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:106677:28
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:106586:13
+      at RawTask.module.exports.RawTask.call (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:82928:19)
+      at flush (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:83010:29)
+      at _combinedTickCallback (internal/process/next_tick.js:131:7)
+
+npm manifest: 
+  {
+    "name": "cver",
+    "version": "0.0.2",
+    "description": "generate translated europass cv",
+    "main": "dist/index.js",
+    "scripts": {
+      "buildev": "malta source/buildev.json",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://fedeghe@github.com/fedeghe/cver.git"
+    },
+    "keywords": [],
+    "author": "Federico Ghedina <fedeghe@gmail.com>",
+    "license": "cc-by-sa-4.0",
+    "bugs": {
+      "url": "https://github.com/fedeghe/cver/issues"
+    },
+    "bin": {
+      "malta": "dist/bin.js"
+    },
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "dependencies": {
+      "balle": "^1.0.37",
+      "malta": "^3.9.14",
+      "malta-html2pdf": "^1.0.2",
+      "malta-js-uglify": "^1.0.5",
+      "malta-json-minify": "^1.0.4",
+      "malta-less": "^1.0.7",
+      "malta-rename": "^1.0.3",
+      "malta-translate": "^1.0.10",
+      "searchhash": "^1.0.23"
+    },
+    "devDependencies": {
+      "coveralls": "~3.0.2",
+      "eslint": "^5.15.1",
+      "eslint-config-standard": "^12.0.0",
+      "eslint-plugin-import": "^2.16.0",
+      "eslint-plugin-node": "^8.0.1",
+      "eslint-plugin-promise": "^4.0.1",
+      "eslint-plugin-standard": "^4.0.0",
+      "mocha": "~5.1.1",
+      "mocha-lcov-reporter": "~1.3.0",
+      "nyc": "^13.3.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
