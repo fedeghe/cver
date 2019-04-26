@@ -2,23 +2,22 @@ const fs = require('fs'),
     path = require('path'),
     Balle = require('balle');
 
-function CverNode (config, parent, rootConfig, resolutor) {
+function CverNode (cache, config, rootTpl, parent, solver) {
     const self = this;
+    this.cache = cache;
     this.config = config;
-    this.rootConfig = rootConfig;
     this.parent = parent;
     this.content = null;
-    this.resolutor = resolutor;
-    this.isRoot = parent === null;
-
+    this.solver = solver;
     this.tpl = config.tpl;
+    this.rootTpl = rootTpl;
     this.data = config.data || {};
     this.blocks = config.blocks || [];
     this.debit = 0;
-    
+    this.isRoot = parent === null;
     this.process().then(() => {
         console.log(`processing node with parent #${parent || 'root'} done`);
-        self.resolutor(self.content);
+        self.solver(self.content);
     });
     this.replacingStrategy = null;
 }
@@ -35,7 +34,7 @@ CverNode.prototype.process = function () {
             self.content = self.isRoot
                 ? self.cache.get(self)
                 : self.cache.getBlock(self);
-            // console.log(self.content);
+            console.log(self.content)
             res();
         }),
 

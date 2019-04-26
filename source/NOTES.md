@@ -1,1 +1,0 @@
-Node 8.5.0 is needed for fs.copyFile

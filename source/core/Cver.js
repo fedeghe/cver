@@ -30,82 +30,19 @@ Cache.getBlock = function (node) {
 
 
 function Cver (config) {
-    this.config = config;
-    this.printConfig = config.print;
-    this.content = null;
-    this.tpl = config.tpl;
-    this.themes = config.themes || [];
-    this.core = null;
-    this.ready = false;
-    this.root = process.cwd();
+    this.config = Object.assign({}, config, { Cache });
+    this.printCOnfig = config.print;
+    this.content = '';
 }
 
 Cver.prototype.start = function () {
     const self = this;
-    return Balle.chain([
-        () => self.prepare(),
-        () => self.dig(),
-        (r) => self.coreHead(r),
-        (r) => self.print()
-    ]).finally(() => {
+    return Balle.one(
+        (res, rej) => new CverNode(self.config, null, self.config, res)
+    ).finally(() => {
         console.log('the end anyway');
     });
 };
 
-Cver.prototype.prepare = function () {
-    const self = this;
-    /**
-     * %core%:
-     * - both core/common and theme styles
-     * - core/script
-     */
-    return Balle.one((res, rej) => {
-        console.log('preparing');
-        const common = fs.readFileSync(
-                path.resolve(`dist/tpls/common.css`),
-                { encoding: 'utf-8' }
-            ),
-            themeStyles = self.themes.reduce(
-                (acc, theme) => `${acc}\n${fs.readFileSync(path.resolve(`dist/tpls/${self.tpl}/themes/${theme}.css`), { encoding: 'utf-8' })}`,
-                common
-            ),
-            script = fs.readFileSync(path.resolve(`dist/tpls/script.js`), { encoding: 'utf-8' });
-        this.core = `<script>${script}</script><style>${themeStyles}</style>`;
-        res();
-    });
-};
-
-Cver.prototype.dig = function (r) {
-    const self = this;
-    return Balle.one((res, rej) => {
-        console.log('start digging');
-        return new CverNode(
-            Cache,
-            self.config,
-            self.tpl, // root
-            null,   // root
-            r => res(r)
-        );
-    });
-};
-
-Cver.prototype.coreHead = function (content) {
-    const self = this;
-    self.content = content;
-    return Balle.one((res, rej) => {
-        console.log('core head');
-        self.content = self.content.replace(/%core%/, self.core);
-        res();
-    });
-};
-
-Cver.prototype.print = function () {
-    const self = this;
-    return Balle.one((res, rej) => {
-        console.log('printing size', self.content.length);
-        // console.log(self.content);
-        res();
-    });
-};
 
 module.exports = Cver;
