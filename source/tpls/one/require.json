@@ -2,6 +2,8 @@
     "EXE": [
         "mkdir -p dist/tpls/one/themes"
     ],
+    "source/tpls/core/script.js": "dist/tpls/one/",
+    "source/tpls/core/style.less": "dist/tpls/one/ -plugins=malta-less",
     "source/tpls/one/index.html": "dist/tpls/one/ -options=justCopy:true",
     "source/tpls/one/themes/*.less": "dist/tpls/one/themes -plugins=malta-less",
     "source/tpls/one/blocks/require.json": true

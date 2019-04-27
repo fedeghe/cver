@@ -1,44 +1,24 @@
 /* eslint-disable no-console */
 
-const fs = require('fs'),
-    path = require('path'),
-    Malta = require('malta'),
+const Malta = require('malta'),
     Balle = require('balle'),
-    sh = require('searchhash'),
     CverNode = require('./CverNode'),
-    Cache = {
-        tpls: {},
-        blocks: {}
-    };
+    Cache = require('./Cache');
 
-Cache.get = function (node) {
-    let ret = this.tpls[node.tpl];
-    if (!ret) {
-        ret = fs.readFileSync(path.resolve(`dist/tpls/${node.tpl}/index.html`), { encoding: 'utf-8' });
-        this.tpls[node.tpl] = ret;
-    }
-    return ret;
-};
-Cache.getBlock = function (node) {
-    let ret = this.blocks[node.tpl];
-    if (!ret) {
-        ret = fs.readFileSync(path.resolve(`dist/tpls/${node.rootTpl}/blocks/${node.tpl}/index.html`), { encoding: 'utf-8' });
-        this.blocks[node.tpl] = ret;
-    }
-    return ret;
-};
+CverNode.Cache = Cache;
 
 
 function Cver (config) {
-    this.config = Object.assign({}, config, { Cache });
-    this.printCOnfig = config.print;
+    this.config = config;
+    // console.log(this.config)
+    this.printConfig = config.print;
     this.content = '';
 }
 
 Cver.prototype.start = function () {
     const self = this;
     return Balle.one(
-        (res, rej) => new CverNode(self.config, null, self.config, res)
+        (res, rej) => new CverNode(self.config, null, self.config.tpl, res)
     ).finally(() => {
         console.log('the end anyway');
     });

@@ -2,10 +2,11 @@ const fs = require('fs'),
     path = require('path'),
     Balle = require('balle');
 
-function CverNode (config, parent, rootConfig, resolutor) {
+function CverNode (config, parent, rootTpl, resolutor) {
+    console.log(config)
     const self = this;
     this.config = config;
-    this.rootConfig = rootConfig;
+    this.rootTpl = rootTpl;
     this.parent = parent;
     this.content = null;
     this.resolutor = resolutor;
@@ -15,7 +16,7 @@ function CverNode (config, parent, rootConfig, resolutor) {
     this.data = config.data || {};
     this.blocks = config.blocks || [];
     this.debit = 0;
-    
+
     this.process().then(() => {
         console.log(`processing node with parent #${parent || 'root'} done`);
         self.resolutor(self.content);
@@ -31,10 +32,11 @@ CverNode.prototype.process = function () {
         /* get tpl content */
         () => Balle.one((res, rej) => {
             console.log('\t\tcontent');
+            console.log('isRoot', self.isRoot)
 
             self.content = self.isRoot
-                ? self.cache.get(self)
-                : self.cache.getBlock(self);
+                ? CverNode.Cache.getTpl(self)
+                : CverNode.Cache.getBlock(self);
             // console.log(self.content);
             res();
         }),
@@ -53,6 +55,7 @@ CverNode.prototype.process = function () {
             }
             res();
         }),
+
         () => Balle.one((res, rej) => {
             // check %blocks%
             if (self.content.match(/%blocks%/)) {
@@ -76,30 +79,28 @@ CverNode.prototype.process = function () {
 };
 
 CverNode.prototype.processBlocks = function () {
-    console.log('\t\t\tblocks');
+    console.log('\t\t\tprocessing blocks');
     const self = this;
     this.debit = this.config.blocks.length;
-    this.config.blocks.forEach(block => new CverNode(
-        self.cache,
-        block,
-        self.rootTpl,
-        self,
-        self.solve
-    ));
+    this.config.blocks.forEach(
+        block => new CverNode(
+            block, self, self.rootTpl, self.solve
+        )
+    );
     console.log(self.blocks);
 };
 
 CverNode.prototype.solve = function () {
     this.debit--;
     if (this.debit === 0) {
+        console.log('SOLVED')
         this.solver();
     }
 };
 
-CverNode.prototype.processPlaceholders = function (solver) {
-
-    console.log('\t\t\tplaceholders');
-    solver();
+CverNode.prototype.processPlaceholders = function () {
+    console.log('\t\t\tprocessing placeholders');
+    this.solver();
 };
 
 CverNode.prototype.straight = function (solver) {

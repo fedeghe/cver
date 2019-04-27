@@ -2,5 +2,7 @@
     "EXE": [
         "mkdir -p dist/tpls/zero"
     ],
+    "source/tpls/core/script.js": "dist/tpls/zero/",
+    "source/tpls/core/style.less": "dist/tpls/zero/ -plugins=malta-less",
     "source/tpls/zero/index.html": "dist/tpls/zero/ -options=justCopy:true"
 }
