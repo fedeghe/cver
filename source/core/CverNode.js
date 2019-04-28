@@ -93,7 +93,7 @@ CverNode.prototype.processBlocks = function () {
 CverNode.prototype.solve = function () {
     this.debit--;
     if (this.debit === 0) {
-        console.log('SOLVED')
+        console.log('SOLVED');
         this.solver();
     }
 };
@@ -103,9 +103,9 @@ CverNode.prototype.processPlaceholders = function () {
     this.solver();
 };
 
-CverNode.prototype.straight = function (solver) {
+CverNode.prototype.straight = function () {
     console.log('process straight');
-    solver();
+    this.solver();
 };
 
 CverNode.prototype.solve = function () {
