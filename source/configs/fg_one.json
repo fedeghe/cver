@@ -15,8 +15,6 @@
         }
     },
 
-
-
     "tpl": "one",
     "themes": [ "light" ],
     "data": {
@@ -24,8 +22,6 @@
         "name": "Federico Ghedina",
         "scriptKey": "xxx-yyy-1123-5353"
     },
-
-
 
     "blocks": [{
         "tpl": "body",

@@ -2,10 +2,7 @@
 
 const Malta = require('malta'),
     Balle = require('balle'),
-    CverNode = require('./CverNode'),
-    Cache = require('./Cache');
-
-CverNode.Cache = Cache;
+    CverNode = require('./CverNode');
 
 
 function Cver (config) {

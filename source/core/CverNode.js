@@ -1,9 +1,10 @@
 const fs = require('fs'),
     path = require('path'),
-    Balle = require('balle');
+    Balle = require('balle'),
+    Cache = require('./Cache');
 
 function CverNode (config, parent, rootTpl, resolutor) {
-    console.log(config)
+    console.log(config);
     const self = this;
     this.config = config;
     this.rootTpl = rootTpl;
@@ -114,5 +115,7 @@ CverNode.prototype.solve = function () {
         this.solver(this.content);
     }
 };
+
+CverNode.Cache = Cache;
 
 module.exports = CverNode;
