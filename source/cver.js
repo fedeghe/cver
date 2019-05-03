@@ -173,8 +173,8 @@ Cver.prototype.createStyles = function () {
             }),
             () => Balle.one((resolve, reject) => {
                 fs.copyFile(
-                    `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme || 'base'}.css`,
-                    `${self.config.outFolder}/source/style.css`,
+                    `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme}.css`,
+                    `${self.config.outFolder}/source/theme.css`,
                     (err) => {
                         err ? reject(err) : resolve();
                     }
