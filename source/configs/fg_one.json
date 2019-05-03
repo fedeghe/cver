@@ -121,7 +121,7 @@
 							{
 								"name": "itemPeriodDescription",
 								"data": {
-									"start": "i18n[Gennaio 2015]",
+									"start": "i18n[Dicembre 2014]",
 									"end": "i18n[Settembre 2017]",
 									"company": "Stailamedia AG",
 									"city": "Zürich",
@@ -132,8 +132,8 @@
 							{
 								"name": "itemPeriodDescription",
 								"data": {
-									"start": "i18n[Gennaio 2015]",
-									"end": "i18n[Settembre 2017]",
+									"start": "i18n[Febbraio 2012]",
+									"end": "i18n[Dicembre 2014]",
 									"company": "ExMachina S.a.g.l.",
 									"city": "Lugano",
 									"role": "Front-end Senior Developer",
@@ -235,6 +235,78 @@
 									"value": "i18n[elementare]"
 								}
 							}
+						]
+					},
+					{
+						"name": "TitledSection",
+						"data": {
+							"title": "i18n[Conoscenza informatiche]"
+						},
+						"blocks": [
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Linguaggi]",
+									"value": "Javascript, PHP, Java, C++"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Markups / Dsdl]",
+									"value": "xml, html4, html5, strict xhtml / Css, Less, Sass"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Libraries / Frameworks / Tools]",
+									"value": "Jquery, lodash / React, Vue, Angularjs, Hyperapp / Webpack, npm docker, charles"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Testing]",
+									"value": "Puppeteer, Jest, Mocha, Chai, Sinon, Jasmine, Casperjs, Phantomjs"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Rdbms, noSql]",
+									"value": "i18n[MySql, PostgreSQL, MongoDB]"
+								}
+                            },
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[WebServers / Web Application Servers]",
+									"value": "Apache, Nginx / Express, Xean, Sails.js, Symfony, Code Igniter"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Versioning]",
+									"value": "Git, Svn"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Other tools]",
+									"value": "Travis CI, part of AWS, Jira, Slack, Trello"
+								}
+							},
+							{
+								"name": "itemKeyValue",
+								"data": {
+									"key": "i18n[Operating systems]",
+									"value": "Mac OS, Linux, Windows"
+								}
+							}
+                            
 						]
 					}
 				]
