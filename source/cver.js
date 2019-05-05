@@ -173,6 +173,15 @@ Cver.prototype.createStyles = function () {
             }),
             () => Balle.one((resolve, reject) => {
                 fs.copyFile(
+                    `dist/tpls/${self.config.tpl.name}/template.css`,
+                    `${self.config.outFolder}/source/template.css`,
+                    (err) => {
+                        err ? reject(err) : resolve();
+                    }
+                );
+            }),
+            () => Balle.one((resolve, reject) => {
+                fs.copyFile(
                     `dist/tpls/${self.config.tpl.name}/${self.config.tpl.theme}.css`,
                     `${self.config.outFolder}/source/theme.css`,
                     (err) => {
