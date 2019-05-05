@@ -1,8 +1,8 @@
 {
     "EXE": [
         "rm -rf dist",
-        "mkdir -p dist/tpls/one",
-        "mkdir -p dist/configs"
+        "mkdir -p dist/configs",
+        "mkdir -p dist/tpls"
     ],
     "source/*.js": "dist",
     "source/configs/*.json": "dist/configs/",
