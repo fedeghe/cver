@@ -308,7 +308,71 @@
 							}
                             
 						]
-					}
+					},
+					{
+						"name": "TitledSection",
+						"data": {
+                            "title": "i18n[Progetti personali]"
+						},
+						"blocks": [{
+                            "name": "itemWithLink",
+                            "data": {
+                                "key": "Synchazard",
+                                "value": "i18n[Un piccolo progetto per minimizzare le richieste http lato client sfruttando i websockets. Permette comunicazioni m2mm, broadcast, unicast e molto altro] ...",
+                                "linkName": "source",
+                                "linkValue": "https://github.com/fedeghe/synchazard"
+                            }
+                        }, {
+                            "name": "itemWithLink",
+                            "data": {
+                                "key": "JMVC",
+                                "value": "i18n[Un framework mvc 100% javascript.]",
+                                "linkName": "source",
+                                "linkValue": "https://github.com/fedeghe/jmvc"
+                            }
+                        }, {
+                            "name": "itemWithLink",
+                            "data": {
+                                "key": "Widgzard",
+                                "value": "i18n[Un potente motore di rendering su DOM.]",
+                                "linkName": "source",
+                                "linkValue": "https://github.com/fedeghe/widgzard"
+                            }
+                        }, {
+                            "name": "itemWithLink",
+                            "data": {
+                                "key": "Malta",
+                                "value": "i18n[Un modulo npm per buildare files. Con ~40 plugins.]",
+                                "linkName": "source",
+                                "linkValue": "https://www.npmjs.org/package/malta"
+                            }
+                        }, {
+                            "name": "itemWithLink",
+                            "data": {
+                                "key": "Leonardo",
+                                "value": "i18n[Una libreria sperimentale per creare programmaticamente svg.]",
+                                "linkName": "source",
+                                "linkValue": "https://github.com/fedeghe/leonardo"
+                            }
+                        }, {
+                            "name": "itemLabel",
+                            "data": {
+                                "label": "i18n[... e molti altri]"
+                            }
+                        }]
+                    }, {
+                        "name": "TitledDescription",
+                        "data": {
+                            "title": "i18n[Hobbies]",
+                            "description": "i18n[Essere un super papá e marito, ascolare musica, lavorare il legno, disegnare a mano e 3d, giocare a tennis e biliardino.]"
+                        }
+                    }, {
+                        "name": "TitledDescription",
+                        "data": {
+                            "title": "i18n[Obiettivi]",
+                            "description": "<ul><li>i18n[Mantenere un piede sempre fuori dalla mia comfort-zone.]</li><li>i18n[Cerco un lavoro che mi permetta di aumentare la mia conoscenza ogni giorno. Preferisco lavorare in team.]</li><li>i18n[Mi piacerebbe viaggiare a conoscere meglio il mondo.]</li></ul>"
+                        }
+                    }
 				]
 			},
 			{
