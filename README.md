@@ -5,7 +5,8 @@
 Provide a programmatic, flexible and easy way to create cool automatically translated CVs in pdf format.
 
 #### How
-Given a config file, which basically contains informations about which blocks and style to use, and obviously the text content for each of those. You can write the text in almost any language and get the output pdf in any other; more or less as follows:
+Simply providing the building blocks, in html with some placeholders for wording and for subblocks, and a configuration file to map the content into the blocks.  
+You can write the text content in almost any language and get the output pdf in any other; more or less as follows:
 ``` js
 const Cver = require('cver'),
     cver = new Cver(),
@@ -20,9 +21,12 @@ that's it.
 The documentation for the config will come soon, as far as I have a stable one. Check the `source/index.js`, this is the file I am using as playgorund.
 
 #### Config documentation
-... not written yet
+
+....soon I'll write it ... now I'm too lazy
+
 #### Available blocks and themes
-... not written yet
+I created just one template with one theme, the one that was matching my favourite cv layout :D  
+But You, ... yes ... You can create other awesome templates.
 
 #### In case you are curious
 Install deps:  
@@ -32,13 +36,13 @@ Install deps:
 
 let the build process go, will watch `source` and fresh build `dist` on meaningful editing. Now the `dist` folder is ready, try it running
 
-    @ node dist/index.js
-
+    @ node dist/create.js dist/configs/fg_one.json
+ 
 and check the content of the `out` folder when done.
 
 ---
 
-##### Development todoList
+##### todo
 - [x] create the P.O.C. based on trial templates, components and styles
 - [x] finalize the config structure
     - [x] sub-blocks added
