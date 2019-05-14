@@ -13,7 +13,6 @@ try {
     }
     const configPath = path.resolve(args[2]),
         config = require(configPath),
-        // Cver = require('./cver'), // do not be tempted to hoist this require
         cver = new Cver();
 
     cver.setup(config);
