@@ -4,7 +4,7 @@ try {
     /**
      * do not require cver before removing the args cause they will be passed to Malta
      *
-     * here istead the rifst thing is to remove them
+     * here istead the first thing is to remove them
      */
     const args = process.argv;
     if (args.length !== 3) {
