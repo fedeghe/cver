@@ -5,7 +5,7 @@
 Provide a programmatic, flexible and easy way to create cool automatically translated CVs in pdf format.
 
 #### How
-Simply providing the building blocks, in html with some placeholders for wording and for subblocks, and a configuration file to map the content into the blocks.  
+Simply providing the building blocks, in html with some placeholders for wording and for sub-blocks, and a configuration file to map the content into the blocks.  
 You can write the text content in almost any language and get the output pdf in any other; more or less as follows:
 ``` js
 const Cver = require('cver'),
