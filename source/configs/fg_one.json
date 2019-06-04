@@ -96,11 +96,22 @@
 							"title": "i18n[Esperienze lavorative]"
 						},
 						"blocks": [
-							{
+                            {
+								"name": "itemPeriodDescription",
+								"data": {
+									"start": "i18n[Giugno 2019]",
+									"end": "i18n[ora]",
+									"company": "Signavio GmbH",
+									"city": "Berlin",
+									"role": "Front-end Senior Developer",
+									"description": "i18n[silenzio]"
+								}
+							},
+                            {
 								"name": "itemPeriodDescription",
 								"data": {
 									"start": "i18n[Ottobre 2018]",
-									"end": "i18n[ora]",
+									"end": "i18n[Maggio 2019]",
 									"company": "Verkstedt",
 									"city": "Berlin",
 									"role": "Front-end Senior Developer",
