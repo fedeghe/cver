@@ -398,7 +398,7 @@
                 "name": "core/footer",
                 "data": {
                     "name": "i18n[Questa é la fine]",
-                    "made": "Built on 3/4/2019 using <a href=\"$cverGithub$\">cver</a>"
+                    "made": "Built on __DATE__ using <a href=\"$cverGithub$\">cver</a>"
                 }
             }
         ]
