@@ -1,398 +1,406 @@
 {
-	"format": "A4",
-	"outFolder": "out",
-	"border": "0.2in",
-	"outName": "Federico_Ghedina_cv",
-	"translate": {
-		"from": "it",
-		"to": [
-			"en",
-			"de",
-			"ja",
-			"zh-cn"
-		]
-	},
-	"tpl": {
-		"name": "one",
-		"type": "template",
-		"theme": "light",
-		"data": {
-			"title": "i18n[Presentazione]",
-			"name": "Federico Ghedina"
-		},
-		"blocks": [
-			{
-				"name": "core/header",
-				"blocks": [
-					{
-						"name": "header1",
-						"data": {
-							"name": "Federico Ghedina",
-							"title": "Curriculum vitae",
-							"content": "contatto skype",
-							"img": "http://www.jmvc.org/fedeghe.jpeg",
-							"email": "federico.ghedina@gmail.com",
-							"mobile": "+49 162 7305989",
-							"skype": "federico.ghedina",
-							"linkedin": "http://www.linkedin.com/in/federicoghedina",
-							"github": "https://github.com/fedeghe",
-							"npm": "https://www.npmjs.com/~fedeghe"
-						}
-					}
-				]
-			},
-			{
-				"name": "core/body",
-				"data": {
-					"title": "body title"
-				},
-				"blocks": [
-					{
-						"name": "TitledSection",
-						"data": {
-							"title": "i18n[Informazioni personali]"
-						},
-						"blocks": [
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Luogo di nascita]",
-									"value": "i18n[Padova]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Data di nascita]",
-									"value": "20 / 9 / 1976"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Residenza]",
-									"value": "Kurfürstendamm 74, 10709, Berlin, Germany"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Stato civile]",
-									"value": "i18n[Sposato]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Nazionalitá]",
-									"value": "i18n[Italiana]"
-								}
-							}
-						]
-					},
-					{
-						"name": "TitledSection",
-						"data": {
-							"title": "i18n[Esperienze lavorative]"
-						},
-						"blocks": [
+    "format": "A4",
+    "outFolder": "out",
+    "border": "0.2in",
+    "outName": "Federico_Ghedina_cv",
+    "translate": {
+        "from": "it",
+        "to": [
+            "en",
+            "de",
+            "ja",
+            "zh-cn"
+        ]
+    },
+    "tpl": {
+        "name": "one",
+        "type": "template",
+        "theme": "light",
+        "data": {
+            "title": "i18n[Presentazione]",
+            "name": "Federico Ghedina"
+        },
+        "blocks": [
+            {
+                "name": "core/header",
+                "blocks": [
+                    {
+                        "name": "header1",
+                        "data": {
+                            "name": "Federico Ghedina",
+                            "title": "Curriculum vitae",
+                            "content": "contatto skype",
+                            "img": "https://www.jmvc.org/fedeghe.jpeg",
+                            "email": "federico.ghedina@gmail.com",
+                            "mobile": "+49 162 7305989",
+                            "skype": "federico.ghedina",
+                            "linkedin": "http://www.linkedin.com/in/federicoghedina",
+                            "github": "https://github.com/fedeghe",
+                            "npm": "https://www.npmjs.com/~fedeghe"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "core/body",
+                "data": {
+                    "title": "body title"
+                },
+                "blocks": [
+                    {
+                        "name": "TitledSection",
+                        "data": {
+                            "title": "i18n[Informazioni personali]"
+                        },
+                        "blocks": [
                             {
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Giugno 2019]",
-									"end": "i18n[ora]",
-									"company": "Signavio GmbH",
-									"city": "Berlin",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[silenzio]"
-								}
-							},
-                            {
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Ottobre 2018]",
-									"end": "i18n[Maggio 2019]",
-									"company": "Verkstedt",
-									"city": "Berlin",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: React, Redux, StoryBook, pure javascript, ES6, Jest, NodeJs, Sass, Docker, MAC OS"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Ottobre 2017]",
-									"end": "i18n[Ottobre 2018]",
-									"company": "Relayr.io",
-									"city": "Berlin",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: React, Redux, pure javascript, ES6, Jest, Bootstrap, NodeJs, Sass, Microservices based backend, Swagger, Docker, MAC OS"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Dicembre 2014]",
-									"end": "i18n[Settembre 2017]",
-									"company": "Stailamedia AG",
-									"city": "Zürich",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: MAC OS, AWS, NodeJS, Mocha, Express, nginx, fast pure javascript, less, HTML5, Phantomjs, Selenium, MEAN stack (sails), Symfony"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Febbraio 2012]",
-									"end": "i18n[Dicembre 2014]",
-									"company": "ExMachina S.a.g.l.",
-									"city": "Lugano",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: linux Ubuntu, MAC OS, LAMP stack, XEAN stack (sails.js), pure javascript, HTM5, CSS3, jQuery, Angular.js, Bootstrap, Selenium, Modx, E4x, Rhinojs, NodeJS, Jasmine, Phantomjs, Karma"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Ottobre 2008]",
-									"end": "i18n[Febbraio 2012]",
-									"company": "Site By Site AG",
-									"city": "Padova",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Backbone, Bootstrap, Selenium, Modx, pure javascript, HTML5, CSS3"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Giugno 2007]",
-									"end": "i18n[Ottobre 2008]",
-									"company": "Dodotour s.r.l.",
-									"city": "Montegrotto terme",
-									"role": "Front-end Senior Developer",
-									"description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Selenium, CodeIgniter, pure javascript, HTML, CSS"
-								}
-							},
-							{
-								"name": "itemPeriodDescription",
-								"data": {
-									"start": "i18n[Giugno 2006]",
-									"end": "i18n[Gennaio 2008]",
-									"company": "i18n[Universitá di Padova, dipartimento di Sociologia]",
-									"city": "Padova",
-									"role": "i18n[Responsabile del laboratorio multimediale]",
-									"description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Prototype, pure javascript, HTML, CSS"
-								}
-							}
-						]
-					},
-					{
-						"name": "TitledSection",
-						"data": {
-							"title": "i18n[Istruzione]"
-						},
-						"blocks": [
-							{
-								"name": "itemInstruction",
-								"data": {
-									"year": 2006,
-									"what": "i18n[Laurea in ingegneria informatica - Universitá di Padova]",
-									"label1": "i18n[Titolo tesi]",
-									"value1": "i18n[Creazione di una collezione sperimentale con texture]",
-									"label2": "i18n[Relatore]",
-									"value2": "Prof. Guido Maria Cortellazzo"
-								}
-							}
-						]
-					},
-					{
-						"name": "TitledSection",
-						"data": {
-							"title": "i18n[Conoscenza lingue]"
-						},
-						"blocks": [
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Italiano]",
-									"value": "i18n[lingua nativa]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Inglese]",
-									"value": "i18n[ottimo, scritto e parlato]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Francese]",
-									"value": "i18n[discreto]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Spagnolo]",
-									"value": "i18n[elementare]"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Tedesco]",
-									"value": "i18n[elementare]"
-								}
-							}
-						]
-					},
-					{
-						"name": "TitledSection",
-						"data": {
-							"title": "i18n[Conoscenza informatiche]"
-						},
-						"blocks": [
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Linguaggi]",
-									"value": "Javascript, PHP, Java, C++"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Markups / Dsdl]",
-									"value": "xml, html4, html5, strict xhtml / Css, Less, Sass"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Libraries / Frameworks / Tools]",
-									"value": "Jquery, lodash / React, Vue, Angularjs, Hyperapp / Webpack, npm docker, charles"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Testing]",
-									"value": "Puppeteer, Jest, Mocha, Chai, Sinon, Jasmine, Casperjs, Phantomjs"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Rdbms, noSql]",
-									"value": "i18n[MySql, PostgreSQL, MongoDB]"
-								}
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Luogo di nascita]",
+                                    "value": "i18n[Padova]"
+                                }
                             },
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[WebServers / Web Application Servers]",
-									"value": "Apache, Nginx / Express, Xean, Sails.js, Symfony, Code Igniter"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Versioning]",
-									"value": "Git, Svn"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Other tools]",
-									"value": "Travis CI, part of AWS, Jira, Slack, Trello"
-								}
-							},
-							{
-								"name": "itemKeyValue",
-								"data": {
-									"key": "i18n[Operating systems]",
-									"value": "Mac OS, Linux, Windows"
-								}
-							}
-                            
-						]
-					},
-					{
-						"name": "TitledSection",
-						"data": {
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Data di nascita]",
+                                    "value": "20 / 9 / 1976"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Residenza]",
+                                    "value": "Kurfürstendamm 74, 10709, Berlin, Germany"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Stato civile]",
+                                    "value": "i18n[Sposato]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Nazionalitá]",
+                                    "value": "i18n[Italiana]"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TitledSection",
+                        "data": {
+                            "title": "i18n[Esperienze lavorative]"
+                        },
+                        "blocks": [
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Giugno 2019]",
+                                    "end": "i18n[ora]",
+                                    "company": "Signavio GmbH",
+                                    "city": "Berlin",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[silenzio]"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Ottobre 2018]",
+                                    "end": "i18n[Maggio 2019]",
+                                    "company": "Verkstedt",
+                                    "city": "Berlin",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: React, Redux, StoryBook, pure javascript, ES6, Jest, NodeJs, Sass, Docker, MAC OS"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Ottobre 2017]",
+                                    "end": "i18n[Ottobre 2018]",
+                                    "company": "Relayr.io",
+                                    "city": "Berlin",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: React, Redux, pure javascript, ES6, Jest, Bootstrap, NodeJs, Sass, Microservices based backend, Swagger, Docker, MAC OS"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Dicembre 2014]",
+                                    "end": "i18n[Settembre 2017]",
+                                    "company": "Stailamedia AG",
+                                    "city": "Zürich",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: MAC OS, AWS, NodeJS, Mocha, Express, nginx, fast pure javascript, less, HTML5, Phantomjs, Selenium, MEAN stack (sails), Symfony"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Febbraio 2012]",
+                                    "end": "i18n[Dicembre 2014]",
+                                    "company": "ExMachina S.a.g.l.",
+                                    "city": "Lugano",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: linux Ubuntu, MAC OS, LAMP stack, XEAN stack (sails.js), pure javascript, HTM5, CSS3, jQuery, Angular.js, Bootstrap, Selenium, Modx, E4x, Rhinojs, NodeJS, Jasmine, Phantomjs, Karma"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Ottobre 2008]",
+                                    "end": "i18n[Febbraio 2012]",
+                                    "company": "Site By Site AG",
+                                    "city": "Padova",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Backbone, Bootstrap, Selenium, Modx, pure javascript, HTML5, CSS3"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Giugno 2007]",
+                                    "end": "i18n[Ottobre 2008]",
+                                    "company": "Dodotour s.r.l.",
+                                    "city": "Montegrotto terme",
+                                    "role": "Front-end Senior Developer",
+                                    "description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Selenium, CodeIgniter, pure javascript, HTML, CSS"
+                                }
+                            },
+                            {
+                                "name": "itemPeriodDescription",
+                                "data": {
+                                    "start": "i18n[Giugno 2006]",
+                                    "end": "i18n[Gennaio 2008]",
+                                    "company": "i18n[Universitá di Padova, dipartimento di Sociologia]",
+                                    "city": "Padova",
+                                    "role": "i18n[Responsabile del laboratorio multimediale]",
+                                    "description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Prototype, pure javascript, HTML, CSS"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TitledSection",
+                        "data": {
+                            "title": "i18n[Istruzione]"
+                        },
+                        "blocks": [
+                            {
+                                "name": "itemInstruction",
+                                "data": {
+                                    "year": 2006,
+                                    "what": "i18n[Laurea in ingegneria informatica - Universitá di Padova]",
+                                    "label1": "i18n[Titolo tesi]",
+                                    "value1": "i18n[Creazione di una collezione sperimentale con texture]",
+                                    "label2": "i18n[Relatore]",
+                                    "value2": "Prof. Guido Maria Cortellazzo"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TitledSection",
+                        "data": {
+                            "title": "i18n[Conoscenza lingue]"
+                        },
+                        "blocks": [
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Italiano]",
+                                    "value": "i18n[lingua nativa]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Inglese]",
+                                    "value": "i18n[ottimo, scritto e parlato]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Francese]",
+                                    "value": "i18n[discreto]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Spagnolo]",
+                                    "value": "i18n[elementare]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Tedesco]",
+                                    "value": "i18n[elementare]"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TitledSection",
+                        "data": {
+                            "title": "i18n[Conoscenza informatiche]"
+                        },
+                        "blocks": [
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Linguaggi]",
+                                    "value": "Javascript, PHP, Java, C++"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Markups / Dsdl]",
+                                    "value": "xml, html4, html5, strict xhtml / Css, Less, Sass"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Libraries / Frameworks / Tools]",
+                                    "value": "Jquery, lodash / React, Vue, Angularjs, Hyperapp / Webpack, npm docker, charles"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Testing]",
+                                    "value": "Puppeteer, Jest, Mocha, Chai, Sinon, Jasmine, Casperjs, Phantomjs"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Rdbms, noSql]",
+                                    "value": "i18n[MySql, PostgreSQL, MongoDB]"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[WebServers / Web Application Servers]",
+                                    "value": "Apache, Nginx / Express, Xean, Sails.js, Symfony, Code Igniter"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Versioning]",
+                                    "value": "Git, Svn"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Other tools]",
+                                    "value": "Travis CI, part of AWS, Jira, Slack, Trello"
+                                }
+                            },
+                            {
+                                "name": "itemKeyValue",
+                                "data": {
+                                    "key": "i18n[Operating systems]",
+                                    "value": "Mac OS, Linux, Windows"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TitledSection",
+                        "data": {
                             "title": "i18n[Progetti personali]"
-						},
-						"blocks": [{
-                            "name": "itemWithLink",
-                            "data": {
-                                "key": "Synchazard",
-                                "value": "i18n[Un piccolo progetto per minimizzare le richieste http lato client sfruttando i websockets. Permette comunicazioni m2mm, broadcast, unicast e molto altro] ...",
-                                "linkName": "source",
-                                "linkValue": "https://github.com/fedeghe/synchazard"
+                        },
+                        "blocks": [
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "Synchazard",
+                                    "value": "i18n[Un piccolo progetto per minimizzare le richieste http lato client sfruttando i websockets. Permette comunicazioni m2mm, broadcast, unicast e molto altro] ...",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/synchazard"
+                                }
+                            },
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "JMVC",
+                                    "value": "i18n[Un framework mvc 100% javascript.]",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/jmvc"
+                                }
+                            },
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "Widgzard",
+                                    "value": "i18n[Un potente motore di rendering su DOM.]",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/widgzard"
+                                }
+                            },
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "Malta",
+                                    "value": "i18n[Un modulo npm per buildare files. Con ~40 plugins.]",
+                                    "linkName": "source",
+                                    "linkValue": "https://www.npmjs.org/package/malta"
+                                }
+                            },
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "Leonardo",
+                                    "value": "i18n[Una libreria sperimentale per creare programmaticamente svg.]",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/leonardo"
+                                }
+                            },
+                            {
+                                "name": "itemLabel",
+                                "data": {
+                                    "label": "i18n[... e molti altri]"
+                                }
                             }
-                        }, {
-                            "name": "itemWithLink",
-                            "data": {
-                                "key": "JMVC",
-                                "value": "i18n[Un framework mvc 100% javascript.]",
-                                "linkName": "source",
-                                "linkValue": "https://github.com/fedeghe/jmvc"
-                            }
-                        }, {
-                            "name": "itemWithLink",
-                            "data": {
-                                "key": "Widgzard",
-                                "value": "i18n[Un potente motore di rendering su DOM.]",
-                                "linkName": "source",
-                                "linkValue": "https://github.com/fedeghe/widgzard"
-                            }
-                        }, {
-                            "name": "itemWithLink",
-                            "data": {
-                                "key": "Malta",
-                                "value": "i18n[Un modulo npm per buildare files. Con ~40 plugins.]",
-                                "linkName": "source",
-                                "linkValue": "https://www.npmjs.org/package/malta"
-                            }
-                        }, {
-                            "name": "itemWithLink",
-                            "data": {
-                                "key": "Leonardo",
-                                "value": "i18n[Una libreria sperimentale per creare programmaticamente svg.]",
-                                "linkName": "source",
-                                "linkValue": "https://github.com/fedeghe/leonardo"
-                            }
-                        }, {
-                            "name": "itemLabel",
-                            "data": {
-                                "label": "i18n[... e molti altri]"
-                            }
-                        }]
-                    }, {
+                        ]
+                    },
+                    {
                         "name": "TitledDescription",
                         "data": {
                             "title": "i18n[Hobbies]",
                             "description": "i18n[Essere un super papá e marito, ascolare musica, lavorare il legno, disegnare a mano e 3d, giocare a tennis e biliardino.]"
                         }
-                    }, {
+                    },
+                    {
                         "name": "TitledDescription",
                         "data": {
                             "title": "i18n[Obiettivi]",
                             "description": "<ul><li>i18n[Mantenere un piede sempre fuori dalla mia comfort-zone.]</li><li>i18n[Cerco un lavoro che mi permetta di aumentare la mia conoscenza ogni giorno. Preferisco lavorare in team.]</li><li>i18n[Mi piacerebbe viaggiare a conoscere meglio il mondo.]</li></ul>"
                         }
                     }
-				]
-			},
-			{
-				"name": "core/footer",
-				"data": {
-					"name": "i18n[Questa é la fine]",
-					"made": "Built on 3/4/2019 using <a href=\"$cverGithub$\">cver</a>"
-				}
-			}
-		]
-	}
+                ]
+            },
+            {
+                "name": "core/footer",
+                "data": {
+                    "name": "i18n[Questa é la fine]",
+                    "made": "Built on 3/4/2019 using <a href=\"$cverGithub$\">cver</a>"
+                }
+            }
+        ]
+    }
 }
