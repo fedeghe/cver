@@ -53,7 +53,7 @@ Cver.prototype.process = function () {
 
 Cver.prototype.createVars = function () {
     const self = this,
-        data = sh.forKey(self.config, 'data'),
+        data = sh.forKey(self.config, 'data').results,
         varsFile = `${self.root}/${self.config.outFolder}/source/vars.json`,
         fixConfig = () => {
             let cache = {};
@@ -199,17 +199,15 @@ Cver.prototype.createStyles = function () {
 };
 
 Cver.prototype.createBlocks = function () {
-    const self = this;
-    let elements = sh.forKey(self.config, 'blocks');
-
-    elements = elements.reduce(
-        (acc, blk) => {
-            if (blk.level === 1) {
-                blk.obj.isRoot = true;
-            }
-            return acc.concat(blk.obj);
-        }, []
-    );
+    const self = this,
+        elements = sh.forKey(self.config, 'blocks').results.reduce(
+            (acc, blk) => {
+                if (blk.level === 1) {
+                    blk.obj.isRoot = true;
+                }
+                return acc.concat(blk.obj);
+            }, []
+        );
 
     return () => Balle.one((resolve, reject) => {
         /**
@@ -261,7 +259,7 @@ Cver.prototype.runMalta = function () {
 
     return () => Balle.one((resolve, reject) => {
         Balle.chain(
-            targetLangs.map(lang => () => Balle.one(resolve => {                
+            targetLangs.map(lang => () => Balle.one(resolve => {
                 try {
                     const outName = self.config.outName.match(/%lang%/)
                         ? self.config.outName.replace('%lang%', lang)
