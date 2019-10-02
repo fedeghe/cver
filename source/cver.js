@@ -6,9 +6,9 @@ const fs = require('fs'),
     time = true;
 
 class Cver {
-    constructor () {
+    constructor (config) {
         this.times = [];
-        this.config = null;
+        this.config = config || null;
         this.ready = false;
         this.root = process.cwd();
     }
