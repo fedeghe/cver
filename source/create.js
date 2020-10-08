@@ -13,9 +13,8 @@ try {
     }
     const configPath = path.resolve(args[2]),
         config = require(configPath),
-        cver = new Cver();
+        cver = new Cver(config);
 
-    cver.setup(config);
     cver.print();
 } catch (e) {
     /* eslint-disable no-console */

@@ -4,3 +4,4 @@ dist
 .malta-translate*
 .printVersion
 .vscode
+.buildNum.json
