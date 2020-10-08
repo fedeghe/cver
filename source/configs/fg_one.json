@@ -8,8 +8,7 @@
         "to": [
             "en",
             "de",
-            "ja",
-            "zh-cn"
+            "ja"
         ]
     },
     "tpl": {
@@ -271,8 +270,8 @@
                             {
                                 "name": "itemKeyValue",
                                 "data": {
-                                    "key": "i18n[Libraries / Frameworks / Tools]",
-                                    "value": "Jquery, lodash / React, Vue, Angularjs, Hyperapp / Webpack, npm docker, charles"
+                                    "key": "i18n[Frameworks] / i18n[Libraries] / i18n[Tools]",
+                                    "value": "React, Vue, Angularjs, Hyperapp, ... many others / Jquery, lodash, moment, ... many others / Webpack, npm, yarn, docker, charles, Postman, ...others"
                                 }
                             },
                             {
