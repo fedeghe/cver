@@ -53,7 +53,7 @@ class Cver {
         return () => Balle.one(resolve => {
             Balle.chain([
                 () => Balle.one(resolve => {
-                    fs.mkdir(`${this.root}/${this.config.outFolder}`, (err) => {
+                    fs.mkdir(`${this.root}/${this.config.outFolder}`, { recursive: true }, err => {
                         if (err && err.code !== 'EEXIST') {
                             throw err;
                         }
@@ -61,7 +61,7 @@ class Cver {
                     });
                 }),
                 () => Balle.one(resolve => {
-                    fs.mkdir(`${this.root}/${this.config.outFolder}/source`, (err) => {
+                    fs.mkdir(`${this.root}/${this.config.outFolder}/source`, { recursive: true }, err => {
                         if (err && err.code !== 'EEXIST') {
                             throw err;
                         }
@@ -256,7 +256,7 @@ class Cver {
                             ? this.config.outName.replace('%lang%', lang)
                             : `${this.config.outName}_${lang}`;
                         Malta.get().check([
-                            `#out/source/${this.config.tpl.name}.html`, 'out',
+                            `#${this.config.outFolder}/source/${this.config.tpl.name}.html`, this.config.outFolder,
                             `-plugins=malta-translate[input:"${this.config.translate.from}",output:"${lang}"]...malta-rename[to:"${outName}.html"]...malta-html2pdf[format:"${this.config.format}",border:"${this.config.border}"]`,
                             '-options=showPath:false,verbose:0'
                         ]).start().then(() => {

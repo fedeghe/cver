@@ -1,6 +1,6 @@
 {
     "format": "A4",
-    "outFolder": "out",
+    "outFolder": "out/one",
     "border": "0.2in",
     "outName": "Federico_Ghedina_cv",
     "translate": {
