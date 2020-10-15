@@ -18,7 +18,7 @@ cver.print();
 ```
 that's it.
 
-The documentation for the config will come soon, as far as I have a stable one. Check the `source/index.js`, this is the file I am using as playgorund.
+The documentation for the config will come soon, as far as I have a stable one. Check the `source/create.js`, this is the file I am using as playgorund.
 
 #### Config documentation
 
