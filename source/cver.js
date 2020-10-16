@@ -21,10 +21,6 @@ class Cver {
         }
     }
 
-    setup (config) {
-        this.config = config;
-    }
-
     print () {
         this.times.push(+new Date());
         Balle.chain([
