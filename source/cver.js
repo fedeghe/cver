@@ -242,7 +242,10 @@ class Cver {
                             : `${this.config.outName}_${lang}`;
                         Malta.get().check([
                             `#${this.config.outFolder}/source/${this.config.tpl.name}.html`, this.config.outFolder,
-                            `-plugins=malta-translate[input:"${this.config.translate.from}",output:"${lang}"]...malta-rename[to:"${outName}.html"]...malta-html2pdf[format:"${this.config.format}",border:"${this.config.border}"]`,
+                            '-plugins='
+                                + `malta-translate[input:"${this.config.translate.from}",output:"${lang}"]`
+                                + `...malta-rename[to:"${outName}.html"]`
+                                + `...malta-html2pdf[format:"${this.config.format}",border:"${this.config.border}"]`,
                             '-options=showPath:false,verbose:0'
                         ]).start().then(() => {
                             console.log(`ran Malta for lang ${lang}`);
