@@ -49,14 +49,6 @@ class Cver {
         return () => Balle.one(resolve => {
             Balle.chain([
                 () => Balle.one(resolve => {
-                    fs.mkdir(`${this.root}/${this.config.outFolder}`, { recursive: true }, err => {
-                        if (err && err.code !== 'EEXIST') {
-                            throw err;
-                        }
-                        resolve();
-                    });
-                }),
-                () => Balle.one(resolve => {
                     fs.mkdir(`${this.root}/${this.config.outFolder}/source`, { recursive: true }, err => {
                         if (err && err.code !== 'EEXIST') {
                             throw err;
