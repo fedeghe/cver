@@ -3,7 +3,13 @@ const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
     sh = require('searchhash'),
-    time = true;
+    time = true,
+    baseVars = {
+        cverGithub: 'https://github.com/fedeghe/cver',
+        cverNpm: 'https://github.com/fedeghe/cver',
+        cverAuthor: '$PACKAGE.author$',
+        cverVersion: '$PACKAGE.version$'
+    };
 
 class Cver {
     constructor (config) {
@@ -69,7 +75,7 @@ class Cver {
             fixConfig = () => {
                 let cache = {};
                 data.forEach(blk => {
-                    // add blocksif not present
+                    // add blocks if not there
                     if (!('blocks' in blk.obj)) {
                         blk.obj.blocks = [];
                     }
@@ -86,12 +92,8 @@ class Cver {
             };
         fixConfig();
 
-        let baseObj = {
-            cverGithub: 'https://github.com/fedeghe/cver',
-            cverNpm: 'https://github.com/fedeghe/cver',
-            cverAuthor: '$PACKAGE.author$',
-            cverVersion: '$PACKAGE.version$'
-        };
+        let baseObj = Object.assign({}, baseVars);
+
         data.forEach(d => {
             let key = null;
             switch (true) {
@@ -141,33 +143,28 @@ class Cver {
     };
 
     get stylesPromiseFunc () {
+        const resolver = (resolve, reject) => (err) => err ? reject(err) : resolve();
         return () => Balle.one((resolve, reject) => {
             Balle.chain([
                 () => Balle.one((resolve, reject) => {
                     fs.copyFile(
                         'dist/tpls/common.css',
                         `${this.config.outFolder}/source/common.css`,
-                        (err) => {
-                            err ? reject(err) : resolve();
-                        }
+                        resolver(resolve, reject)
                     );
                 }),
                 () => Balle.one((resolve, reject) => {
                     fs.copyFile(
                         `dist/tpls/${this.config.tpl.name}/template.css`,
                         `${this.config.outFolder}/source/template.css`,
-                        (err) => {
-                            err ? reject(err) : resolve();
-                        }
+                        resolver(resolve, reject)
                     );
                 }),
                 () => Balle.one((resolve, reject) => {
                     fs.copyFile(
                         `dist/tpls/${this.config.tpl.name}/${this.config.tpl.theme}.css`,
                         `${this.config.outFolder}/source/theme.css`,
-                        (err) => {
-                            err ? reject(err) : resolve();
-                        }
+                        resolver(resolve, reject)
                     );
                 })
             ]).then(() => {
