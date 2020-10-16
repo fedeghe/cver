@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "buildev": "malta source/buildev.json",
+        "clean": "rm -rf dist out",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
