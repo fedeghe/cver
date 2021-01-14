@@ -159,7 +159,7 @@
                                     "end": "i18n[Febbraio 2012]",
                                     "company": "Site By Site AG",
                                     "city": "Padova",
-                                    "role": "Front-end Senior Developer",
+                                    "role": "Full-stack Senior Developer",
                                     "description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Backbone, Bootstrap, Selenium, Modx, pure javascript, HTML5, CSS3"
                                 }
                             },
@@ -170,7 +170,7 @@
                                     "end": "i18n[Ottobre 2008]",
                                     "company": "Dodotour s.r.l.",
                                     "city": "Montegrotto terme",
-                                    "role": "Front-end Senior Developer",
+                                    "role": "Full-stack Developer",
                                     "description": "i18n[tecnologie utilizzate]: linux Ubuntu, LAMP stack, jQuery, Selenium, CodeIgniter, pure javascript, HTML, CSS"
                                 }
                             },
@@ -374,7 +374,7 @@
                             {
                                 "name": "itemLabel",
                                 "data": {
-                                    "label": "i18n[... e molti altri]"
+                                    "label": "i18n[... e piú di altri 80]"
                                 }
                             }
                         ]
