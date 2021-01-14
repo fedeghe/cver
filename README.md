@@ -22,7 +22,7 @@ The documentation for the config will come soon, as far as I have a stable one. 
 
 #### Config documentation
 
-....soon I'll write it ... now I'm too lazy
+....soon I'll write it ... now I'm too lazy now
 
 #### Available blocks and themes
 I created just one template with one theme, the one that was matching my favourite cv layout :D  
