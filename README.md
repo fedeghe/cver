@@ -31,8 +31,8 @@ But You, ... yes ... You can create other awesome templates.
 #### In case you are curious
 Install deps:  
 
-    @ npm i
-    @ npm run buildev
+    @ yarn 
+    @ yarn buildev
 
 let the build process go, will watch `source` and fresh build `dist` on meaningful editing. Now the `dist` folder is ready, try it running
 

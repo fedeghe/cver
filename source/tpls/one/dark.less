@@ -1,14 +1,23 @@
 html{
-    background-color: #555;
-    color: #ddd;
+    background-color: #333;
+    color: #eee;
     font-family: verdana;
     body{
         margin: 3em;
         .myname {
             color:orange
         }
-        p {
-            color: #333
+
+        ul.diff {
+            li {
+                &:nth-child(odd){
+                    background-color:#444;
+                    border:none 3px #000000;
+                }
+            }
+        }
+        a {
+            color: rgb(29, 101, 202)
         }
     }
 }
