@@ -390,7 +390,7 @@
                         "name": "TitledDescription",
                         "data": {
                             "title": "i18n[Obiettivi]",
-                            "description": "<ul><li>i18n[Mantenere un piede sempre fuori dalla mia comfort-zone.]</li><li>i18n[Cerco un lavoro che mi permetta di aumentare la mia conoscenza ogni giorno. Preferisco lavorare in team.]</li><li>i18n[Mi piacerebbe viaggiare a conoscere meglio il mondo.]</li></ul>"
+                            "description": "<ul><li>i18n[Mantenere un piede sempre fuori dalla mia comfort-zone.]</li><li>i18n[Cerco un lavoro che mi permetta di aumentare la mia conoscenza ogni giorno. Preferisco lavorare in team.]</li><li>i18n[Mi piacerebbe viaggiare per conoscere meglio il mondo.]</li></ul>"
                         }
                     }
                 ]
