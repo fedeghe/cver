@@ -1692,10 +1692,10 @@ malta-translate@^1.1.1:
   dependencies:
     "@vitalets/google-translate-api" "^3.0.0"
 
-malta@^4.1.25:
-  version "4.1.25"
-  resolved "https://registry.yarnpkg.com/malta/-/malta-4.1.25.tgz#0d193ae345e8333d322efddc8e1404850077a441"
-  integrity sha512-zVijoAdwrC9FJKLbHhHe6zuX+DamZ1cBj63yTVD8HI41JhhKbmUMc4UmhSvM4h16mr8AVNuBe3dQdLhv4X9bqw==
+malta@^4.1.35:
+  version "4.1.35"
+  resolved "https://registry.yarnpkg.com/malta/-/malta-4.1.35.tgz#907cf08ca8970f45dd6410605dd828e1d8a8baa9"
+  integrity sha512-RlzKWVeNyEIp0T4gsI58MmxaDz4y5DHxJOKKjUjBQRstL65+OJUiLT2JR32y7ObzC7fnWRS/TrkCAqgjnhaiSg==
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"
