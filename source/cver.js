@@ -70,7 +70,7 @@ class Cver {
     }
 
     get varsPromiseFunc () {
-        const data = sh.forKey(this.config, 'data').results,
+        const data = sh.forKey(this.config, 'data'),
             varsFile = `${this.root}/${this.config.outFolder}/source/vars.json`,
             fixConfig = () => {
                 let cache = {};
@@ -177,7 +177,7 @@ class Cver {
     };
 
     get blocksPromiseFunc () {
-        const elements = sh.forKey(this.config, 'blocks').results.reduce(
+        const elements = sh.forKey(this.config, 'blocks').reduce(
             (acc, blk) => {
                 if (blk.level === 1) {
                     blk.obj.isRoot = true;

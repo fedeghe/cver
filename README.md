@@ -40,6 +40,10 @@ let the build process go, will watch `source` and fresh build `dist` on meaningf
  
 and check the content of the `out` folder when done.
 
+
+### limits & no linits
+goo9l€ does not like bursts of incoming requests from the same IP, so do what you can to change it in case you do not see the translation flowing in correctly.
+
 ---
 
 ##### todo

@@ -26,14 +26,14 @@
     },
     "dependencies": {
         "balle": "^1.0.45",
-        "malta": "^4.1.35",
+        "malta": "^4.1.38",
         "malta-html2pdf": "^1.0.5",
         "malta-js-uglify": "^1.0.13",
         "malta-json-minify": "^1.0.7",
         "malta-less": "^1.0.12",
         "malta-rename": "^1.0.6",
-        "malta-translate": "^1.1.1",
-        "searchhash": "^1.1.12"
+        "malta-translate": "^1.1.5",
+        "searchhash": "^1.2.11"
     },
     "devDependencies": {
         "coveralls": "~3.0.2",

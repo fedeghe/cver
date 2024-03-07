@@ -102,7 +102,7 @@
                                 "data": {
                                     "start": "i18n[Giugno 2019]",
                                     "end": "i18n[ora]",
-                                    "company": "Signavio GmbH",
+                                    "company": "SAP Signavio GmbH",
                                     "city": "Berlin",
                                     "role": "Front-end Senior Developer",
                                     "description": "i18n[silenzio]"
@@ -272,22 +272,22 @@
                             {
                                 "name": "itemKeyValue",
                                 "data": {
-                                    "key": "i18n[Frameworks] / i18n[Libraries] / i18n[Tools]",
-                                    "value": "React, Vue, Angularjs, Hyperapp, ... many others / Jquery, lodash, moment, ... many others / npm, yarn, Docker, Charles, Postman, Webpack, Parcel ...others"
+                                    "key": "Frameworks / Libraries / Tools",
+                                    "value": "React, Vue, Angularjs, Hyperapp, ... many others / Jquery, lodash, moment, ... many others / npm, yarn, Docker, Charles, Postman, RapidApi, Webpack, Parcel ...others"
                                 }
                             },
                             {
                                 "name": "itemKeyValue",
                                 "data": {
                                     "key": "i18n[Testing]",
-                                    "value": "Puppeteer, Jest, Mocha, Chai, Sinon, Jasmine, Casperjs, Phantomjs"
+                                    "value": "Puppeteer, Jest, Cypress, Mocha, Chai, Sinon, Jasmine, Casperjs, Phantomjs"
                                 }
                             },
                             {
                                 "name": "itemKeyValue",
                                 "data": {
-                                    "key": "i18n[Rdbms, noSql]",
-                                    "value": "i18n[MySql, PostgreSQL, MongoDB]"
+                                    "key": "i18n[Rdbms, noSql, middlewares]",
+                                    "value": "i18n[MySql, PostgreSQL, MongoDB, GraphQL]"
                                 }
                             },
                             {
@@ -338,24 +338,6 @@
                             {
                                 "name": "itemWithLink",
                                 "data": {
-                                    "key": "JMVC",
-                                    "value": "i18n[Un framework mvc 100% javascript.]",
-                                    "linkName": "source",
-                                    "linkValue": "https://github.com/fedeghe/jmvc"
-                                }
-                            },
-                            {
-                                "name": "itemWithLink",
-                                "data": {
-                                    "key": "Widgzard",
-                                    "value": "i18n[Un potente motore di rendering su DOM.]",
-                                    "linkName": "source",
-                                    "linkValue": "https://github.com/fedeghe/widgzard"
-                                }
-                            },
-                            {
-                                "name": "itemWithLink",
-                                "data": {
                                     "key": "Malta",
                                     "value": "i18n[Un modulo npm per buildare files. Con ~40 plugins.]",
                                     "linkName": "source",
@@ -372,9 +354,27 @@
                                 }
                             },
                             {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "Widgzard",
+                                    "value": "i18n[Un potente motore di rendering su DOM.]",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/widgzard"
+                                }
+                            },
+                            {
+                                "name": "itemWithLink",
+                                "data": {
+                                    "key": "CVER",
+                                    "value": "i18n[Create your cv in any language. This CV is created with CVER]",
+                                    "linkName": "source",
+                                    "linkValue": "https://github.com/fedeghe/cver"
+                                }
+                            },
+                            {
                                 "name": "itemLabel",
                                 "data": {
-                                    "label": "i18n[... e piú di altri 80]"
+                                    "label": "i18n[... e molti molti altri]"
                                 }
                             }
                         ]
@@ -383,7 +383,7 @@
                         "name": "TitledDescription",
                         "data": {
                             "title": "i18n[Hobbies]",
-                            "description": "i18n[Essere un super papá e marito, ascolare musica, lavorare il legno, disegnare a mano e 3d, giocare a tennis e biliardino.]"
+                            "description": "i18n[Essere un super papá e marito, ascoltare musica, lavorare il legno, disegnare a mano e 3d, giocare a tennis e biliardino.]"
                         }
                     },
                     {
