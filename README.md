@@ -25,7 +25,7 @@ The documentation for the config will come soon, as far as I have a stable one. 
 ....soon I'll write it ... now I'm too lazy now
 
 #### Available blocks and themes
-I created just one template with one theme, the one that was matching my favourite cv layout :D  
+I created just one template with one theme, the one that was matching my favourite layout :D  
 But You, ... yes ... You can create other awesome templates.
 
 #### In case you are curious
@@ -41,8 +41,8 @@ let the build process go, will watch `source` and fresh build `dist` on meaningf
 and check the content of the `out` folder when done.
 
 
-### limits & no linits
-goo9l€ does not like bursts of incoming requests from the same IP, so do what you can to change it in case you do not see the translation flowing in correctly.
+### Limits & no limits
+All translations in the end come from goo9l€, and it does not like bursts of incoming requests from the same IP. So in case in the `out` folder you dont see the pdfs flowing out then do what you can to change your IP in case you do not see the translation flowing in correctly.
 
 ---
 
