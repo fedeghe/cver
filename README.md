@@ -42,7 +42,7 @@ and check the content of the `out` folder when done.
 
 
 ### Limits & no limits
-All translations in the end come from goo9l€, and it does not like bursts of incoming requests from the same IP. So in case in the `out` folder you dont see the pdfs flowing out then do what you can to change your IP in case you do not see the translation flowing in correctly.
+All translations in the end come from goo9l€, and it does not like bursts of incoming requests from the same IP. So in case in the `out` folder you dont see the pdfs flowing out then do what you can to change your IP.
 
 ---
 
