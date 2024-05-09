@@ -1549,10 +1549,10 @@ malta-rename@^1.0.6:
   resolved "https://registry.yarnpkg.com/malta-rename/-/malta-rename-1.0.6.tgz#c7a5f160c1395636d7adba2ce1eb382976ac228f"
   integrity sha512-TUgvbMK2ZYZK3E2kkXNfJZiHT/o9ebWKOBdlUWvbKpdBmw2AGFKm+Kw19R3BOSbrrnh7uazkktyIF+1BzBIgHQ==
 
-malta-translate@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/malta-translate/-/malta-translate-1.1.5.tgz#e348604060144b356a73e707416866cfdc2b2e1f"
-  integrity sha512-3jV9aqSpsYv97Kh2Lqay7L7ggvnuwakiyE06sBY0cJUxk1rnglABskPmUqciyg5V2kAuBTbNCux4Do27tpvg6g==
+malta-translate@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/malta-translate/-/malta-translate-1.1.8.tgz#10bcd2c592865c189321514d0b89985369b0bbd7"
+  integrity sha512-Mg5WeIUHk7rpsOlW7hq0SQzDvtNj0IVUPBCK2kjvn51VXHDVXPGZD4nzohjA6hL62diEUEKbgP+glgArR2JeyA==
   dependencies:
     "@vitalets/google-translate-api" "^9.2.0"
     http-proxy-agent "^7.0.2"

@@ -32,7 +32,7 @@
         "malta-json-minify": "^1.0.7",
         "malta-less": "^1.0.12",
         "malta-rename": "^1.0.6",
-        "malta-translate": "^1.1.5",
+        "malta-translate": "^1.1.8",
         "searchhash": "^1.2.11"
     },
     "devDependencies": {
