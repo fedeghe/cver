@@ -18,11 +18,11 @@ cver.print();
 ```
 that's it.
 
-The documentation for the config will come soon, as far as I have a stable one. Check the `source/create.js`, this is the file I am using as playgorund.
+The documentation for the config will come soon, as far as I have a stable one. Check the `source/create.js`, this is the file I am using as playground.
 
 #### Config documentation
 
-....soon I'll write it ... now I'm too lazy now
+... maybe one day baby
 
 #### Available blocks and themes
 I created just one template with one theme, the one that was matching my favourite layout :D  
@@ -46,7 +46,7 @@ All translations in the end come from goo9l€, and it does not like bursts of i
 
 ---
 
-##### todo
+##### what
 - [x] create the P.O.C. based on trial templates, components and styles
 - [x] finalize the config structure
     - [x] sub-blocks added
