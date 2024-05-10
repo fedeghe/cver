@@ -1,6 +1,6 @@
 {
     "name": "cver",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "generate translated europass cv",
     "main": "dist/index.js",
     "scripts": {
