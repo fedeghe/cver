@@ -193,12 +193,15 @@ class Cver {
             Balle.chain(
                 elements.map(
                     element => () => Balle.one((resolve, reject) => {
-                        const elementPath = element.isRoot
-                            ? `dist/tpls/${element.name}/index.html`
-                            : `dist/tpls/${this.config.tpl.name}/blocks/${element.name}.html`;
-
-                        let content = fs.readFileSync(elementPath, { encoding: 'utf-8' }),
-                            blocksContent = '';
+                        let elementPath = element.isRoot
+                                ? `dist/tpls/${element.name}/index.html`
+                                : `dist/tpls/${this.config.tpl.name}/blocks/${element.name}.html`,
+                            blocksContent = '',
+                            content = '';
+                        if (element.name.startsWith('coreBlocks')) {
+                            elementPath = `dist/${element.name}.html`;
+                        }
+                        content = fs.readFileSync(elementPath, { encoding: 'utf-8' });
 
                         if (element.alias) {
                             while (content.indexOf(`$${element.name}.`) >= 0) {
@@ -207,7 +210,8 @@ class Cver {
                         }
                         if (element.blocks) {
                             blocksContent = element.blocks.reduce((acc, current) => {
-                                const content = `$$$$${current.alias || current.name}.html$$$$`;
+                                let name = current.alias || current.name;
+                                const content = name ? `$$$$${name}.html$$$$` : '%blocks%';
                                 return [acc, content].join('\n');
                             }, '');
                         }

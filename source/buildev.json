@@ -2,10 +2,12 @@
     "EXE": [
         "rm -rf dist",
         "mkdir -p dist/configs",
-        "mkdir -p dist/tpls"
+        "mkdir -p dist/tpls",
+        "mkdir -p dist/coreBlocks"
     ],
     "source/*.js": "dist",
     "source/configs/*.json": "dist/configs",
+    "source/coreBlocks/*.html": "dist/coreBlocks",
     "source/tpls/common.less": "dist/tpls -plugins=malta-less",
     "source/tpls/one/require.json": true
 }

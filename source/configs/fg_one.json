@@ -23,7 +23,8 @@
         },
         "blocks": [
             {
-                "name": "core/header",
+                
+                "name": "coreBlocks/blocks",
                 "blocks": [
                     {
                         "name": "header1",
@@ -43,7 +44,7 @@
                 ]
             },
             {
-                "name": "core/body",
+                "name": "coreBlocks/blocks",
                 "data": {
                     "title": "body title"
                 },
