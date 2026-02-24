@@ -1557,10 +1557,10 @@ malta-translate@^1.1.8:
     "@vitalets/google-translate-api" "^9.2.0"
     http-proxy-agent "^7.0.2"
 
-malta@^4.1.41:
-  version "4.1.41"
-  resolved "https://registry.yarnpkg.com/malta/-/malta-4.1.41.tgz#de88e424e0b623d7b8004afe19fff526b0eb6abe"
-  integrity sha512-SwTi8k2k9XsNxar+5FTFGlQtzW+hZ8svqh31SbS5Kwqo13JZ+ipHHR4NG+sywsAJi1b6uE48uJYFh/eFos3q6Q==
+malta@^4.1.43:
+  version "4.1.43"
+  resolved "https://registry.yarnpkg.com/malta/-/malta-4.1.43.tgz#6bc7a6ef0f386a50aa8c323a1f45473eead7b508"
+  integrity sha512-0jhl5n1WljcKRgVEI88xNMaETnlsiS9A9LgyQSw+KdeM9IW1yPJXRyjxG9Gn5OodnL0ZLjgbKGHXvK8tcucN4g==
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"

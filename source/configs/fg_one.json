@@ -6,11 +6,7 @@
     "translate": {
         "from": "it",
         "to": [
-            "en",
-            "de",
-            "ja",
-            "fr",
-            "ar"
+            "en"
         ]
     },
     "tpl": {
@@ -24,7 +20,7 @@
         "blocks": [
             {
                 
-                "name": "coreBlocks/blocks",
+                "name": "core/header",
                 "blocks": [
                     {
                         "name": "header1",
@@ -44,7 +40,7 @@
                 ]
             },
             {
-                "name": "coreBlocks/blocks",
+                "name": "core/body",
                 "data": {
                     "title": "body title"
                 },

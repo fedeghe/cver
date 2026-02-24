@@ -198,21 +198,19 @@ class Cver {
                                 : `dist/tpls/${this.config.tpl.name}/blocks/${element.name}.html`,
                             blocksContent = '',
                             content = '';
-                        if (element.name.startsWith('coreBlocks')) {
-                            elementPath = `dist/${element.name}.html`;
-                        }
-                        content = fs.readFileSync(elementPath, { encoding: 'utf-8' });
 
+                        content = fs.readFileSync(elementPath, { encoding: 'utf-8' });
+                        
                         if (element.alias) {
                             while (content.indexOf(`$${element.name}.`) >= 0) {
                                 content = content.replace(`$${element.name}.`, `$${element.alias}.`);
                             }
                         }
-                        if (element.blocks) {
+                        if (element.blocks && element.blocks.length) {
                             blocksContent = element.blocks.reduce((acc, current) => {
                                 let name = current.alias || current.name;
                                 const content = name ? `$$$$${name}.html$$$$` : '%blocks%';
-                                return [acc, content].join('\n');
+                                return [acc, content].join(`\n`);
                             }, '');
                         }
                         fs.writeFile(
@@ -245,7 +243,8 @@ class Cver {
                             ? this.config.outName.replace('%lang%', lang)
                             : `${this.config.outName}_${lang}`;
                         Malta.get().check([
-                            `#${this.config.outFolder}/source/${this.config.tpl.name}.html`, this.config.outFolder,
+                            `#${this.config.outFolder}/source/${this.config.tpl.name}.html`,
+                            this.config.outFolder,
                             '-plugins='
                                 + `malta-translate[input:"${this.config.translate.from}",output:"${lang}"]`
                                 + `...malta-rename[to:"${outName}.html"]`
