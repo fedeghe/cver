@@ -37,6 +37,9 @@ Install deps:
 let the build process go, will watch `source` and fresh build `dist` on meaningful editing. Now the `dist` folder is ready, try it running
 
     @ node dist/create.js dist/configs/fg_one.json
+    // or
+    @ yarn go dist/configs/fg_one.json
+
  
 and check the content of the `out` folder when done.
 

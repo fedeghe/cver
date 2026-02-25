@@ -3,6 +3,7 @@ const fs = require('fs'),
     Malta = require('malta'),
     Balle = require('balle'),
     sh = require('searchhash'),
+    pkg = require('../package.json'),
     time = true,
     baseVars = {
         cverGithub: 'https://github.com/fedeghe/cver',
@@ -17,6 +18,7 @@ class Cver {
         this.config = config || null;
         this.ready = false;
         this.root = process.cwd();
+        this.tot = 0;
     }
 
     time (msg) {
@@ -28,12 +30,13 @@ class Cver {
     }
 
     print () {
+        console.log(`${this.constructor.name} v.${pkg.version} started`);
         this.times.push(+new Date());
         Balle.chain([
             this.process(),
             this.runMalta()
         ]).then(() => {
-            console.log('...done');
+            console.log('⦿ done');
         });
     }
 
@@ -63,7 +66,7 @@ class Cver {
                     });
                 })
             ]).then(() => {
-                this.time('outdir created');
+                this.time('⦿ outdir created');
                 resolve();
             });
         });
@@ -120,6 +123,7 @@ class Cver {
                     console.log(err);
                     throw err;
                 }
+                this.time('⦿ vars.json file created');
                 resolve();
             });
         });
@@ -134,7 +138,7 @@ class Cver {
                     if (err) {
                         reject(err);
                     } else {
-                        this.time('tpl created');
+                        this.time('⦿ template created');
                         resolve();
                     }
                 }
@@ -168,7 +172,7 @@ class Cver {
                     );
                 })
             ]).then(() => {
-                this.time('styles created');
+                this.time('⦿ stylesheets created');
                 resolve();
             }).catch(e => {
                 reject(e);
@@ -200,7 +204,7 @@ class Cver {
                             content = '';
 
                         content = fs.readFileSync(elementPath, { encoding: 'utf-8' });
-                        
+
                         if (element.alias) {
                             while (content.indexOf(`$${element.name}.`) >= 0) {
                                 content = content.replace(`$${element.name}.`, `$${element.alias}.`);
@@ -222,7 +226,7 @@ class Cver {
                     })
                 )
             ).then(() => {
-                this.time('blocks created');
+                this.time('⦿ blocks created');
                 resolve();
             }).catch(e => {
                 reject(e);
@@ -251,7 +255,7 @@ class Cver {
                                 + `...malta-html2pdf[format:"${this.config.format}",border:"${this.config.border}"]`,
                             '-options=showPath:false,verbose:0'
                         ]).start().then(() => {
-                            console.log(`ran Malta for lang ${lang}`);
+                            this.time(`⦿ - ran Malta for lang ${lang}`);
                             resolve();
                         });
                     } catch (e) {
@@ -259,7 +263,7 @@ class Cver {
                     }
                 }))
             ).then(() => {
-                this.time('malta ran');
+                console.log(`⦿ malta finished in ${+new Date() - this.times[0]}ms`);
                 resolve();
             }).catch(e => {
                 reject(e);

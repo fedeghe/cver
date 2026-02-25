@@ -1,11 +1,13 @@
 {
     "name": "cver",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "generate translated europass cv",
     "main": "dist/index.js",
     "scripts": {
         "buildev": "malta source/buildev.json",
+        "build": "malta source/build.json",
         "clean": "rm -rf dist out",
+        "go": "node dist/create.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -19,7 +21,7 @@
         "url": "https://github.com/fedeghe/cver/issues"
     },
     "bin": {
-        "malta": "dist/bin.js"
+        "cver": "dist/index.js"
     },
     "engines": {
         "node": ">=4.0.0"

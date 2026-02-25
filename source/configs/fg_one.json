@@ -6,7 +6,10 @@
     "translate": {
         "from": "it",
         "to": [
-            "en"
+            "en",
+            "de",
+            "fr",
+            "es"
         ]
     },
     "tpl": {
