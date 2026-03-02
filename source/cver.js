@@ -240,12 +240,19 @@ class Cver {
             : [this.config.translate.to];
 
         return () => Balle.one((resolve, reject) => {
+            let to, i = 0, frames = ['/', '-', '\\', '|'];
             Balle.chain(
                 targetLangs.map(lang => () => Balle.one(resolve => {
                     try {
                         const outName = this.config.outName.match(/%lang%/)
                             ? this.config.outName.replace('%lang%', lang)
                             : `${this.config.outName}_${lang}`;
+
+                        clearInterval(to);
+                        to = setInterval(() => {
+                            process.stdout.write(`\r${frames[i++ % frames.length]} Working on ${lang}...`);
+                        }, 100);
+
                         Malta.get().check([
                             `#${this.config.outFolder}/source/${this.config.tpl.name}.html`,
                             this.config.outFolder,
@@ -254,8 +261,10 @@ class Cver {
                                 + `...malta-rename[to:"${outName}.html"]`
                                 + `...malta-html2pdf[format:"${this.config.format}",border:"${this.config.border}"]`,
                             '-options=showPath:false,verbose:0'
-                        ]).start().then(() => {
-                            this.time(`⦿ - ran Malta for lang ${lang}`);
+                        ]).start(/* rem this runs on each plugin end so does not really fit the timout management */).then(() => {
+                            clearInterval(to);
+                            process.stdout.write(`\r`);
+                            this.time(`⦿ translated to \`${lang}\``);
                             resolve();
                         });
                     } catch (e) {
@@ -263,6 +272,7 @@ class Cver {
                     }
                 }))
             ).then(() => {
+                clearInterval(to);
                 console.log(`⦿ malta finished in ${+new Date() - this.times[0]}ms`);
                 resolve();
             }).catch(e => {
