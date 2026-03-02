@@ -633,6 +633,7 @@ __metadata:
     malta-js-uglify: "npm:^1.0.13"
     malta-json-minify: "npm:^1.0.7"
     malta-less: "npm:^1.0.12"
+    malta-millijs: "npm:^1.0.6"
     malta-rename: "npm:^1.0.6"
     malta-translate: "npm:^1.1.8"
     mocha: "npm:~5.1.1"
@@ -640,7 +641,7 @@ __metadata:
     nyc: "npm:^13.3.0"
     searchhash: "npm:^1.2.11"
   bin:
-    malta: dist/bin.js
+    cver: dist/index.js
   languageName: unknown
   linkType: soft
 
@@ -2109,6 +2110,13 @@ __metadata:
   dependencies:
     less: "npm:^3.12.2"
   checksum: 10c0/477efb1c54bf984e09383febead6bf629b888e40d60057fc2cba2a6e5ce5504a8ecb273484e71b032090b305dd3a53b6d411b8a3a8d8fe31e277c8caf42293a4
+  languageName: node
+  linkType: hard
+
+"malta-millijs@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "malta-millijs@npm:1.0.6"
+  checksum: 10c0/30d9886f13daea64bf724888e58f0124bd64384d81f26d4c12147f74880d11d87d31fbb2c6b68efad0fe33a27b76f6ba9242bcefea8a638467a655ccd0f2fa56
   languageName: node
   linkType: hard
 

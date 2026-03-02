@@ -32,7 +32,7 @@ But You, ... yes ... You can create other awesome templates.
 Install deps:  
 
     @ yarn 
-    @ yarn buildev
+    @ yarn dev
 
 let the build process go, will watch `source` and fresh build `dist` on meaningful editing. Now the `dist` folder is ready, try it running
 

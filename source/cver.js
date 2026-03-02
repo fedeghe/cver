@@ -52,7 +52,7 @@ class Cver {
                 resolve();
             });
         });
-    };
+    }
 
     get outDirPromiseFunc () {
         return () => Balle.one(resolve => {
@@ -144,7 +144,7 @@ class Cver {
                 }
             );
         });
-    };
+    }
 
     get stylesPromiseFunc () {
         const resolver = (resolve, reject) => (err) => err ? reject(err) : resolve();
@@ -178,7 +178,7 @@ class Cver {
                 reject(e);
             });
         });
-    };
+    }
 
     get blocksPromiseFunc () {
         const elements = sh.forKey(this.config, 'blocks').reduce(
@@ -232,7 +232,7 @@ class Cver {
                 reject(e);
             });
         });
-    };
+    }
 
     runMalta () {
         const targetLangs = this.config.translate.to instanceof Array
@@ -269,8 +269,8 @@ class Cver {
                 reject(e);
             });
         });
-    };
+    }
 }
 
-
+//
 module.exports = Cver;

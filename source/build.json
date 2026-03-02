@@ -4,7 +4,7 @@
         "mkdir -p dist/configs",
         "mkdir -p dist/tpls"
     ],
-    "#source/*.js": "dist",
+    "#source/*.js": "dist -plugins=malta-millijs",
     "#source/configs/*.json": "dist/configs",
     "#source/tpls/common.less": "dist/tpls -plugins=malta-less",
     "#source/tpls/one/require.json": true
